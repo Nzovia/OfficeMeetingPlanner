@@ -7,9 +7,11 @@ import javax.persistence.*;
 public class Employees {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long employee_id;
     @Column(nullable = false,length = 60)
-    private String employee_name;
+    private String firstName;
+    @Column(nullable = false,length = 60)
+    private String secondName;
     @Column(nullable = false,length = 60)
     private String employee_gender;
     @Column(unique = true, nullable = false,length = 60)
@@ -17,39 +19,37 @@ public class Employees {
     @Column(unique = true, nullable = false,length = 60)
     private String employee_email;
 
-    @ManyToOne()
-    @JoinColumn(name="organization_id")
-    private Organization organization;
-    @OneToOne()
-    private  Users users;
+//    @ManyToOne()
+//    @JoinColumn(name="organization_id")
+//    private Organization organization;
+//    @OneToOne()
+//    private  Users users;
 
     public Employees() {
     }
 
-    public Employees(Long id, String employee_name, String employee_gender, String employee_phone, String employee_email,
-                     Organization organization) {
-        this.id = id;
-        this.employee_name = employee_name;
-        this.employee_gender = employee_gender;
-        this.employee_phone = employee_phone;
-        this.employee_email = employee_email;
-        this.organization = organization;
+    public Long getEmployee_id() {
+        return employee_id;
     }
 
-    public Long getId() {
-        return id;
+    public void setEmployee_id(Long employee_id) {
+        this.employee_id = employee_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getEmployee_name() {
-        return employee_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setEmployee_name(String employee_name) {
-        this.employee_name = employee_name;
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
     }
 
     public String getEmployee_gender() {
@@ -74,25 +74,5 @@ public class Employees {
 
     public void setEmployee_email(String employee_email) {
         this.employee_email = employee_email;
-    }
-
-    public Organization getOrganization() {
-        return organization;
-    }
-
-    public void setOrganization(Organization organization) {
-        this.organization = organization;
-    }
-
-    @Override
-    public String toString() {
-        return "Employees{" +
-                "id=" + id +
-                ", employee_name='" + employee_name + '\'' +
-                ", employee_gender='" + employee_gender + '\'' +
-                ", employee_phone='" + employee_phone + '\'' +
-                ", employee_email='" + employee_email + '\'' +
-                ", organization=" + organization +
-                '}';
     }
 }

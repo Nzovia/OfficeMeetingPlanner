@@ -1,48 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
-          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
-          crossorigin="anonymous">
-   <!-- <link rel="stylesheet" href="style.css">-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro&family=Literata">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Office Planner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>admin</title>
+    <link  th:href = "@{/css/style.css}" rel="stylesheet">
 </head>
+
 <body>
-<div class="sidebar">
-    <div class="sidebar-brand">
-        <h3><span class=" "></span>Tracom Service Limited</h3>
+<div class="side-menu">
+    <div class="brand-name">
+        <h2>Tracom Service Limited</h2>
     </div>
-</div>
-<div class="sidebar-menu">
-    <a href=""><span class="fa fa-home"></span>
-        <span>Dashboard</span></a>
-    <ul style="list-style-type: none">
-        <li>
+    <ul>
+        <li><img th:src ="@{/images/dashboard.png}">&nbsp;<span>Dashboard </span>  </li>
+        <li><a th:href="@{see_list}"><img th:src="@{/images/Actions-user-properties-icon.png}">&nbsp; <span>Employees</span></a></li>
+        <li><img th:src="@{/images/meetings.png}">&nbsp;<span>Meetings</span> </li>
+        <li><img th:src="@{/images/boardroom icon.png}" alt="">&nbsp; <span>Board Rooms</span></li>
+        <li><img th:src="@{/images/communication.png}" alt="">&nbsp; <span>Communication</span></li>
+        <li><img th:src="@{/images/Calendar.png}" alt="">&nbsp; <span>Calendar</span></li>
+        <li><img th:src="@{/images/notification.png}" alt="">&nbsp; <span>Notifications</span></li>
+        <li><img th:src="@{/images/help-web-button.png } " alt="">&nbsp; <span>LogOut</span></li>
 
-        </li>
-        <li>
-            <a href=""><span class="fa fa-user-tie-hair-long"></span>
-            <span>Users</span></a>
-
-            <!-- add a dropdown add register users and view users-->
-        </li>
-        <li>
-            <a href=""><span class="fa fa-landmark"></span>
-            <span>Board Rooms</span></a>
-        </li>
-        <li>
-            <a href=""><span class="la la-ingloo"></span>
-            <span>Meeting</span></a>
-        </li>
-        <li>
-            <a href=""><span class="la la-ingloo"></span>
-            <span>Dashboard</span></a>
-        </li>
     </ul>
+</div>
+<div class="container">
+    <div class="header">
+        <div class="nav">
+            <div class="search">
+                <input type="text" placeholder="search here.....">
+                <button type="submit"><img th:src="@{/images/magnifier.png}" alt=""> </button>
+            </div>
+            <div class="user">
+                <a th:href="@{addEmployee}" class="btn">Add Employee</a>
+                <img th:src="@{/images/notification-bell.png}" alt="">
+                <div class="img-case">
+                    <img th:src="@{/images/user.png}" alt="">
+                </div>
+            </div>
+            <!-- <div class="user"></div> -->
+        </div>
+    </div>
+    <div class="content">
+        <div class="cards">
+            <div class="card">
+                <div class="box">
+                    <h1>110</h1>
+                    <h3>Employees</h3>
+                </div>
+                <div class="icon-case">
+                    <img th:src="@{/images/userscard.png}" alt="">
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <h1>50</h1>
+                    <h3>Meetings</h3>
+                </div>
+                <div class="icon-case">
+                    <img th:src="@{/images/meetingcard.png}" alt="">
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <h1>2</h1>
+                    <h3>Rooms</h3>
+                </div>
+                <div class="icon-case">
+                    <img th:src="@{/images/boardroom.png}" alt="">
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <h1>10</h1>
+                    <h3>Resources</h3>
+                </div>
+                <div class="icon-case">
+                    <img th:src="@{/images/resourcescard.png}" alt="">
+
+                </div>
+            </div>
+        </div>
+        <div class="content-2">
+            <div class="meeting-queue">
+                <div class="title">
+                    <h3>Events in Waiting</h3>
+                    <a href="#" class="btn">View All</a>
+                </div>
+                <table>
+                    <tr>
+                        <th>Id</th>
+                        <th>title</th>
+                        <th>count</th>
+                        <th>Start</th>
+                        <th>end</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Induction of Interns</td>
+                        <td>60</td>
+                        <td>11:00AM</td>
+                        <td>1:30PM</td>
+                        <td><a href="#" class="btn">see</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="new-employee">
+                <div class="title">
+                    <h3>New Employees</h3>
+                    <a href="#" class="btn">All</a>
+                </div>
+                <table>
+                    <tr>
+                        <th>profile</th>
+                        <th>name</th>
+                        <th>Email</th>
+                        <th>message</th>
+                    </tr>
+                    <tr>
+                        <td><img th:src="@{/images/user.png}" alt=""></td>
+                        <td>Nicholas Maundu</td>
+                        <td>nichonzovia@gmail.com</td>
+                        <td><a href="#" class="btn">View</a></td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
 </div>
 
 </body>
+
 </html>

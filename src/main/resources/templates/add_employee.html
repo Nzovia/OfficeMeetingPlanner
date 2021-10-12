@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+          crossorigin="anonymous">
+    <!--    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/css/bootstrap.min.css"/>-->
+    <script type="text/javascript" src="webjars/bootstrap/js/boostrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css"/>
+
+
+    <title>Add new employees</title>
+</head>
+<body>
+<div class="container width: 500px;">
+    <h2>Add new Employee</h2>
+    <hr/>
+
+    <form th:action="@{addEmployee}" th:object="${employees}"  method="post">
+        <div class="col-8">
+            <input type="text" th:field="*{fname}" placeholder="first name"
+                   class="form control col-4 mb-4" required minlength="4"
+                   maxlength="20" />
+        </div>
+        <div class="col-8">
+            <input type="text" th:field="*{sname}" placeholder="second name"
+                   class="form control col-4 mb-4" required minlength="4"
+                   maxlength="20" />
+        </div>
+        <div class="col-8">
+            <input type="text" th:field="*{phone}" placeholder="user phone" class="form control col-4 mb-4"
+                   required minlength="4"
+                   maxlength="20"/>
+        </div>
+        <div class="col-8">
+            <input type="email" th:field="*{email}" placeholder="user email" class="form control col-4 mb-4"
+                   required minlength="4"
+                   maxlength="20"/>
+        </div>
+        <div>
+            <button class="btn btn-primary " type="submit">save</button>
+        </div>
+        <!--you notice that when we are updating an element from the database multiple copies are built there
+        instead use the following field to enhance our operation-->
+        <input type="hidden" th:field="*{id}">
+
+
+    </form>
+    <hr/>
+    <a th:href="@{/list}">back to list</a>
+
+</div>
+
+
+
+
+</body>
+</html>

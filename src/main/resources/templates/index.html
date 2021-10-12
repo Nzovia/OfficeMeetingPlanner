@@ -2,20 +2,26 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
-    <title>Getting Started</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
           crossorigin="anonymous">
-<!--    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/css/bootstrap.min.css"/>-->
+    <!--    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/css/bootstrap.min.css"/>-->
     <script type="text/javascript" src="webjars/bootstrap/js/boostrap.min.js"></script>
+    <link th:href = "@{/css/started.css}" rel="stylesheet" >
+    <title>Getting started</title>
 </head>
-<body>
-<div class="container text-center">
-    <h2>Meeting Planner</h2>
-    <h3><a th:href="@{/users}">List Users</a></h3>
-    <h3><a th:href="@{/register}">Register</a></h3>
-    <h3><a th:href="@{/login}">Get Started</a></h3>
-    <!--login page is pre-developed by spring security and no need to code it-->
+<body >
+<div class="container">
+    <img th:src="@{/images/homebackground.jpg}" alt="" style="width:100%;"/>
+    <!--<div align="center" class="container my-2 h-100" style="margin:130px auto; align-content: center">-->
+    <div class="centered">
+        <h1 style="color: white; font-weight: bolder">Getting Started</h1>
+        <a th:href="@{/start_Activities}" class="btn btn-primary mb-3" >let's manage your events >>>></a>
+        <p style="color: #2874CD; font-size: 20px; font-weight: bolder"  >we are focussed in making sure that no time is wasted when you're planning for company events</p>
+    </div>
 </div>
 </body>
 </html>

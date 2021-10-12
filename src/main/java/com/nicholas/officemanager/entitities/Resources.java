@@ -12,17 +12,11 @@ public class Resources {
     private String resource_name;
     @Column(nullable = false,length = 200)
     private String resource_description;
-    @ManyToOne
-    @JoinColumn(name = "resources")
-    private Events events;
+//    @ManyToOne
+//    @JoinColumn(name = "resources")
+//    private Events events;
 
     public Resources() {
-    }
-
-    public Resources(Long resource_id, String resource_name, String resource_description) {
-        this.resource_id = resource_id;
-        this.resource_name = resource_name;
-        this.resource_description = resource_description;
     }
 
     public Long getResource_id() {
@@ -47,14 +41,5 @@ public class Resources {
 
     public void setResource_description(String resource_description) {
         this.resource_description = resource_description;
-    }
-
-    @Override
-    public String toString() {
-        return "Resources{" +
-                "resource_id=" + resource_id +
-                ", resource_name='" + resource_name + '\'' +
-                ", resource_description='" + resource_description + '\'' +
-                '}';
     }
 }
