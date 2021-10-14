@@ -27,7 +27,7 @@ public class EmployeeController {
         }
 
 
-        @GetMapping({"/showEmployees","/list","/see_list"})
+        @GetMapping({"/showEmployees","/list_employees","/see_list"})
         public ModelAndView getAllEmployees(){
             ModelAndView mov = new ModelAndView("list_employees");
             mov.addObject("employees", employeeRepo.findAll());
@@ -43,11 +43,11 @@ public class EmployeeController {
         @PostMapping("/addEmployee")
         public String addEmployees(@ModelAttribute Employees employees){
             employeeRepo.save(employees);
-            return "redirect:/list";
+            return "redirect:/list_employees";
         }
         @GetMapping("/showUpdate")
         public ModelAndView showUpdate(@RequestParam Long employeeId){
-            ModelAndView mov = new ModelAndView("add_employees");
+            ModelAndView mov = new ModelAndView("add_employee");
             Employees employeesU = employeeRepo.findById(employeeId).get();
             mov.addObject("employees", employeesU);
             return mov;
@@ -55,7 +55,7 @@ public class EmployeeController {
         @GetMapping("/showDeleteEmployee")
         public String showDeleteEmployee(@RequestParam Long employeeId){
             employeeRepo.deleteById(employeeId);
-            return "redirect:/list";
+            return "redirect:/list_employees";
         }
     }
 

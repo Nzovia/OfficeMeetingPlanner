@@ -10,7 +10,7 @@
           crossorigin="anonymous">
     <!--    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/css/bootstrap.min.css"/>-->
     <script type="text/javascript" src="webjars/bootstrap/js/boostrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css}"/>
 
 
     <title>Add new employees</title>
@@ -22,22 +22,27 @@
 
     <form th:action="@{addEmployee}" th:object="${employees}"  method="post">
         <div class="col-8">
-            <input type="text" th:field="*{fname}" placeholder="first name"
+            <input type="text" th:field="*{firstName}" placeholder="first name"
                    class="form control col-4 mb-4" required minlength="4"
                    maxlength="20" />
         </div>
         <div class="col-8">
-            <input type="text" th:field="*{sname}" placeholder="second name"
+            <input type="text" th:field="*{secondName}" placeholder="second name"
                    class="form control col-4 mb-4" required minlength="4"
                    maxlength="20" />
         </div>
         <div class="col-8">
-            <input type="text" th:field="*{phone}" placeholder="user phone" class="form control col-4 mb-4"
+            <input type="text" th:field="*{employee_gender}" placeholder="user gender" class="form control col-4 mb-4"
                    required minlength="4"
                    maxlength="20"/>
         </div>
         <div class="col-8">
-            <input type="email" th:field="*{email}" placeholder="user email" class="form control col-4 mb-4"
+            <input type="text" th:field="*{employee_phone}" placeholder="user phone" class="form control col-4 mb-4"
+                   required minlength="4"
+                   maxlength="20"/>
+        </div>
+        <div class="col-8">
+            <input type="email" th:field="*{employee_email}" placeholder="user email" class="form control col-4 mb-4"
                    required minlength="4"
                    maxlength="20"/>
         </div>
@@ -46,7 +51,7 @@
         </div>
         <!--you notice that when we are updating an element from the database multiple copies are built there
         instead use the following field to enhance our operation-->
-        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{employeeId}">
 
 
     </form>

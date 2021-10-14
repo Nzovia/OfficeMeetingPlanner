@@ -1,8 +1,6 @@
 package com.nicholas.officemanager.entitities;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "meeting_events")
@@ -10,12 +8,14 @@ public class Events {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long events_id;
-    @Column(unique = true, nullable = false,length = 60)
+    @Column(unique = true, nullable = false,length = 100)
     private String meeting_name;
     @Column(unique = true, nullable = false,length = 60)
     private String start_time;
     @Column(unique = true, nullable = false,length = 60)
-    private String end_time;
+    private String meeting_duration;
+    @Column (unique = true, nullable = false, length = 255)
+    private String event_description;
 
 //    @OneToMany(mappedBy = "events")
 //    private Set<Resources> resources = new HashSet<>();
@@ -27,11 +27,13 @@ public class Events {
     public Events() {
     }
 
-    public Events(Long events_id, String meeting_name, String start_time, String end_time) {
+
+    public Events(Long events_id, String meeting_name, String start_time, String meeting_duration, String event_description) {
         this.events_id = events_id;
         this.meeting_name = meeting_name;
         this.start_time = start_time;
-        this.end_time = end_time;
+        this.meeting_duration = meeting_duration;
+        this.event_description = event_description;
     }
 
     public Long getEvents_id() {
@@ -58,11 +60,19 @@ public class Events {
         this.start_time = start_time;
     }
 
-    public String getEnd_time() {
-        return end_time;
+    public String getMeeting_duration() {
+        return meeting_duration;
     }
 
-    public void setEnd_time(String end_time) {
-        this.end_time = end_time;
+    public void setMeeting_duration(String end_time) {
+        this.meeting_duration = end_time;
+    }
+
+    public String getEvent_description() {
+        return event_description;
+    }
+
+    public void setEvent_description(String event_description) {
+        this.event_description = event_description;
     }
 }

@@ -33,15 +33,16 @@
 
         <tbody>
         <tr th:each="employee: ${employees}">
-            <td th:text="${employee.id}"></td>
-            <td th:text="${employee.fname}"></td>
-            <td th:text="${employee.sname}"></td>
-            <td th:text="${employee.phone}"></td>
-            <td th:text="${employee.email}"></td>
+            <td th:text="${employee.employeeId}"></td>
+            <td th:text="${employee.firstName}"></td>
+            <td th:text="${employee.secondName}"></td>
+            <td th:text="${employee.employee_gender}"></td>
+            <td th:text="${employee.employee_phone}"></td>
+            <td th:text="${employee.employee_email}"></td>
             <td>
-                <a th:href="@{showUpdate (employeeId=${employee.id})}" class="btn btn-info ">
+                <a th:href="@{showUpdate (employeeId=${employee.employeeId})}" class="btn btn-info ">
                     Update</a>
-                <a th:href="@{showDeleteEmployee (employeeId=${employee.id})}" class="btn btn-danger ml-2">
+                <a th:href="@{showDeleteEmployee (employeeId=${employee.employeeId})}" class="btn btn-danger ml-2">
                     Delete</a>
 
             </td>
