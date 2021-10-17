@@ -18,13 +18,13 @@ public class EventsController {
     public ModelAndView createEvents(){
         ModelAndView modelAndView = new ModelAndView("CreateEvent");
         Events ourEvents = new Events();
-        modelAndView.addObject("meeting_events", ourEvents);
+        modelAndView.addObject("meeting_event", ourEvents);
 
         return modelAndView;
     }
     @PostMapping("/addEvent")
-    public String createEvents(@ModelAttribute EventsRepository eventsRepo){
-        //eventsRepo.save(meeting_events);
+    public String createEvents(@ModelAttribute Events  meeting_event){
+        eventsRepo.save(meeting_event);
         return "redirect:/list_employees";
 
     }

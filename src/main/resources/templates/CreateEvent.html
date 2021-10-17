@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns: th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
@@ -14,7 +14,7 @@
     <h2>Create New Event</h2>
     <hr/>
 
-    <form th:action="@{addEvent}" th:object="${meeting_events}"  method="post">
+    <form th:action="@{addEvent}" th:object="${meeting_event}"  method="post">
         <div class="col-8">
             <input type="text" th:field="*{meeting_name}" placeholder="Meeting Title"
                    class="form control col-4 mb-4" required minlength="4"
