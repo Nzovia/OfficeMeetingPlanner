@@ -75,6 +75,11 @@ th,td{
 .side-menu li img{
     size: 24px;
 }
+.side-menu li a{
+    color: #f1f1f1;
+    display: flex;
+
+}
 .side-menu li:hover{
     background: white;
     color: #f05462;

@@ -25,7 +25,7 @@ public class EventsController {
     @PostMapping("/addEvent")
     public String createEvents(@ModelAttribute Events  meeting_event){
         eventsRepo.save(meeting_event);
-        return "redirect:/list_employees";
+        return "redirect:/index.table";
 
     }
 }
