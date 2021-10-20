@@ -15,7 +15,7 @@
     </div>
     <ul>
         <li><img th:src ="@{/images/dashboard.png}">&nbsp;<span>Dashboard </span>  </li>
-        <li><a th:href="@{see_list}"><img th:src="@{/images/Actions-user-properties-icon.png}">&nbsp; <span>Employees</span></a></li>
+        <li><a th:href="@{see_list}" th:target="_self"><img th:src="@{/images/Actions-user-properties-icon.png}">&nbsp; <span>Employees</span></a></li>
         <li><a th:href="@{see_events}"><img th:src="@{/images/meetings.png}">&nbsp;<span>Meetings</span> </a></li>
         <li><img th:src="@{/images/boardroom icon.png}" alt="">&nbsp; <span>Board Rooms</span></li>
         <li><img th:src="@{/images/communication.png}" alt="">&nbsp; <span>Communication</span></li>
@@ -92,22 +92,27 @@
                     <a href="#" class="btn">View All</a>
                 </div>
                 <table>
+                    <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>title</th>
-                        <th>count</th>
-                        <th>Start</th>
-                        <th>end</th>
-                        <th>Action</th>
+                        <th>Events Id</th>
+                        <th>Meeting Title</th>
+                        <th>StartTime</th>
+                        <th>MeetingDuration</th>
+                        <th>MeetingDescription</th>
+<!--                        <th>Action</th>-->
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Induction of Interns</td>
-                        <td>60</td>
-                        <td>11:00AM</td>
-                        <td>1:30PM</td>
+                    </thead>
+                    <tbody>
+                    <tr th:each="meeting_events: ${meeting_event}">
+                        <td th:text="${meeting_events.events_id}"></td>
+                        <td th:text="${meeting_events.meeting_name}"></td>
+                        <td th:text="${meeting_events.start_time}"></td>
+                        <td th:text="${meeting_events.meeting_duration}"></td>
+                        <td th:text="${meeting_events.event_description}"></td>
+<!--                        <td th:text="${employee.employeeId}"></td>-->
                         <td><a href="#" class="btn">see</a></td>
                     </tr>
+                    </tbody>
                 </table>
             </div>
             <div class="new-employee">

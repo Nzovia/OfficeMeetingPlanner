@@ -28,4 +28,10 @@ public class EventsController {
         return "redirect:/index.table";
 
     }
+    @GetMapping("/adminDashboard")
+    public ModelAndView getAllEmployees(){
+        ModelAndView mov = new ModelAndView("adminDashboard");
+        mov.addObject("meeting_event", eventsRepo.findAll());
+        return mov;
+    }
 }
