@@ -12,6 +12,9 @@
 <body>
 <div class="container width: 500px;">
     <h2>Create New Event</h2>
+    <hv/>
+    <a th:href="@{/eventsOperations}">All events</a>
+<!--    <button class="btn btn-primary " type="submit">Create Event</button>-->
     <hr/>
 
     <form th:action="@{addEvent}" th:object="${meeting_event}"  method="post">

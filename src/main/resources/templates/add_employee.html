@@ -11,15 +11,16 @@
     <!--    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/css/bootstrap.min.css"/>-->
     <script type="text/javascript" src="webjars/bootstrap/js/boostrap.min.js"></script>
     <link rel="stylesheet" type="text/css" th:href="@{https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css}"/>
+    <link  th:href = "@{/css/formstyle.css}" rel="stylesheet">
 
 
     <title>Add new employees</title>
 </head>
 <body>
-<div class="container width: 500px;">
+<div class="center">
     <h2>Add new Employee</h2>
-    <hr/>
-
+<!--    <hr/>-->
+    <div class="form">
     <form th:action="@{addEmployee}" th:object="${employees}"  method="post">
         <div class="col-8">
             <input type="text" th:field="*{firstName}" placeholder="first name"
@@ -55,8 +56,9 @@
 
 
     </form>
+    </div>
     <hr/>
-    <a th:href="@{/list}">back to list</a>
+    <a th:href="@{/list_employees}">back to list</a>
 
 </div>
 
