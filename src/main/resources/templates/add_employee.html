@@ -22,33 +22,40 @@
 <!--    <hr/>-->
     <div class="form">
     <form th:action="@{addEmployee}" th:object="${employees}"  method="post">
-        <div class="col-8">
-            <input type="text" th:field="*{firstName}" placeholder="first name"
-                   class="form control col-4 mb-4" required minlength="4"
-                   maxlength="20" />
+        <div class="text_field">
+            <input type="text" th:field="*{firstName}" required minlength="4" maxlength="20" />
+            <span></span>
+            <label>First Name</label>
+                    </div>
+            <!--        <div class="txt_field">-->
+<!--            <input type="text" th:field="*{secondName}" placeholder="second name"-->
+<!--                   class="form control col-4 mb-4" required minlength="4"-->
+<!--                   maxlength="20" />-->
+<!--        </div>-->
+        <div class="text_field">
+            <input type="text" th:field="*{secondName}" required minlength="4" maxlength="20" />
+            <span></span>
+            <label>Second Name</label>
+
         </div>
-        <div class="col-8">
-            <input type="text" th:field="*{secondName}" placeholder="second name"
-                   class="form control col-4 mb-4" required minlength="4"
-                   maxlength="20" />
+        <div class="text_field">
+            <input type="text" th:field="*{employee_gender}" required minlength="4" maxlength="20" />
+            <span></span>
+            <label>Employee Gender</label>
         </div>
-        <div class="col-8">
-            <input type="text" th:field="*{employee_gender}" placeholder="user gender" class="form control col-4 mb-4"
-                   required minlength="4"
-                   maxlength="20"/>
+        <div class="text_field">
+            <input type="text" th:field="*{employee_phone}" required minlength="4" maxlength="20"/>
+            <span></span>
+            <label>Phone Number</label>
         </div>
-        <div class="col-8">
-            <input type="text" th:field="*{employee_phone}" placeholder="user phone" class="form control col-4 mb-4"
-                   required minlength="4"
-                   maxlength="20"/>
+        <div class="text_field">
+            <input type="email" th:field="*{employee_email}" required minlength="4" maxlength="20"/>
+            <span></span>
+            <label>Personal Email</label>
         </div>
-        <div class="col-8">
-            <input type="email" th:field="*{employee_email}" placeholder="user email" class="form control col-4 mb-4"
-                   required minlength="4"
-                   maxlength="20"/>
-        </div>
-        <div>
-            <button class="btn btn-primary " type="submit">save</button>
+        <div class="pass">
+            <input type="submit" value="Register">
+<!--            <button class="btn btn-primary " type="submit">save</button>-->
         </div>
         <!--you notice that when we are updating an element from the database multiple copies are built there
         instead use the following field to enhance our operation-->
@@ -58,7 +65,9 @@
     </form>
     </div>
     <hr/>
+    <div class="externallist">
     <a th:href="@{/list_employees}">back to list</a>
+    </div>
 
 </div>
 
