@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<div class="side-menu">
+<div class="side-menu" th:fragment="sidemenus">
     <div class="brand-name">
         <h2>Tracom Service Limited</h2>
     </div>
@@ -25,23 +25,23 @@
 
     </ul>
 </div>
-<div class="container">
-    <div class="header">
-        <div class="nav">
-            <div class="search">
-                <input type="text" placeholder="search here.....">
-                <button type="submit"><img th:src="@{/images/magnifier.png}" alt=""> </button>
-            </div>
-            <div class="user">
-                <a th:href="@{addEmployee}" class="btn">Add Employee</a>
-                <img th:src="@{/images/notification-bell.png}" alt="">
-                <div class="img-case">
-                    <img th:src="@{/images/user.png}" alt="">
-                </div>
-            </div>
-            <!-- <div class="user"></div> -->
-        </div>
-    </div>
+<div class="container" >
+<!--    <div class="header" th:fragment="header-menu" >-->
+<!--        <div class="nav">-->
+<!--            <div class="search">-->
+<!--                <input type="text" placeholder="search here.....">-->
+<!--                <button type="submit"><img th:src="@{/images/magnifier.png}" alt=""> </button>-->
+<!--            </div>-->
+<!--            <div class="user">-->
+<!--                <a th:href="@{addEmployee}" class="btn">Add Employee</a>-->
+<!--                <img th:src="@{/images/notification-bell.png}" alt="">-->
+<!--                <div class="img-case">-->
+<!--                    <img th:src="@{/images/user.png}" alt="">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; <div class="user"></div> &ndash;&gt;-->
+<!--        </div>-->
+<!--    </div>-->
     <div class="content">
         <div class="cards">
             <div class="card">

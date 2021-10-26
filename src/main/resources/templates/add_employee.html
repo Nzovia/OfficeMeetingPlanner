@@ -11,13 +11,15 @@
     <!--    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/css/bootstrap.min.css"/>-->
     <script type="text/javascript" src="webjars/bootstrap/js/boostrap.min.js"></script>
     <link rel="stylesheet" type="text/css" th:href="@{https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css}"/>
+    <link  th:href = "@{/css/style.css}" rel="stylesheet">
     <link  th:href = "@{/css/formstyle.css}" rel="stylesheet">
-
-
     <title>Add new employees</title>
 </head>
 <body>
+<div th:replace=" adminDashboard :: sidemenus"></div>
+<div th:replace=" header :: header-menu"></div>
 <div class="center">
+
     <h2>Add new Employee</h2>
 <!--    <hr/>-->
     <div class="form">

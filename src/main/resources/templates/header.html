@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link  th:href = "@{/css/header.css}" rel="stylesheet">
+</head>
+<body>
+<div class="header" th:fragment="header-menu" >
+    <div class="nav">
+        <div class="search">
+            <input type="text" placeholder="search here.....">
+            <button type="submit"><img th:src="@{/images/magnifier.png}" alt=""> </button>
+        </div>
+        <div class="user">
+            <a th:href="@{addEmployee}" class="btn">Add Employee</a>
+            <img th:src="@{/images/notification-bell.png}" alt="">
+            <div class="img-case">
+                <img th:src="@{/images/user.png}" alt="">
+            </div>
+        </div>
+        <!-- <div class="user"></div> -->
+    </div>
+</div>
+
+</body>
+</html>
