@@ -16,8 +16,9 @@
 </head>
 <body>
 <div th:replace=" adminDashboard :: sidemenus"></div>
-<div th:replace=" header :: header-menu"></div>
 <div class="container">
+    <div th:replace=" adminDashboard :: header-menu"></div>
+    <div class="content">
     <h3>List of employees</h3>
     <hr/>
     <a th:href="@{/addEmployee}" class="btn btn-primary mb-2">New Employee</a>
@@ -28,6 +29,7 @@
             <th>id</th>
             <th>first name</th>
             <th>second name</th>
+            <th>gender</th>
             <th>phone</th>
             <th>email</th>
             <th>actions</th>
@@ -52,6 +54,7 @@
         </tr>
         </tbody>
     </table>
+</div>
 </div>
 <!--the data table scripts libraries-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:fragment="headers">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -17,7 +17,13 @@
         <li><img th:src ="@{/images/dashboard.png}">&nbsp;<span>Dashboard </span>  </li>
         <li><a th:href="@{see_list}" th:target="_self"><img th:src="@{/images/Actions-user-properties-icon.png}">&nbsp; <span>Employees</span></a></li>
         <li><a th:href="@{see_events}"><img th:src="@{/images/meetings.png}">&nbsp;<span>Meetings</span> </a></li>
-        <li><img th:src="@{/images/boardroom icon.png}" alt="">&nbsp; <span>Board Rooms</span></li>
+        <li><img th:src="@{/images/boardroom icon.png}" alt="">&nbsp; <span>Board Rooms</span>
+<!--            <div class="dropdown-content">-->
+<!--                <a href="#">Book</a>-->
+<!--                <a href="#">View</a>-->
+<!--                <a href="#">Change</a>-->
+<!--            </div>-->
+        </li>
         <li><img th:src="@{/images/communication.png}" alt="">&nbsp; <span>Communication</span></li>
         <li><img th:src="@{/images/Calendar.png}" alt="">&nbsp; <span>Calendar</span></li>
         <li><img th:src="@{/images/notification.png}" alt="">&nbsp; <span>Notifications</span></li>
@@ -26,22 +32,22 @@
     </ul>
 </div>
 <div class="container" >
-<!--    <div class="header" th:fragment="header-menu" >-->
-<!--        <div class="nav">-->
-<!--            <div class="search">-->
-<!--                <input type="text" placeholder="search here.....">-->
-<!--                <button type="submit"><img th:src="@{/images/magnifier.png}" alt=""> </button>-->
-<!--            </div>-->
-<!--            <div class="user">-->
-<!--                <a th:href="@{addEmployee}" class="btn">Add Employee</a>-->
-<!--                <img th:src="@{/images/notification-bell.png}" alt="">-->
-<!--                <div class="img-case">-->
-<!--                    <img th:src="@{/images/user.png}" alt="">-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            &lt;!&ndash; <div class="user"></div> &ndash;&gt;-->
-<!--        </div>-->
-<!--    </div>-->
+    <div class="header" th:fragment="header-menu" >
+        <div class="nav">
+            <div class="search">
+                <input type="text" placeholder="search here.....">
+                <button type="submit"><img th:src="@{/images/magnifier.png}" alt=""> </button>
+            </div>
+            <div class="user">
+                <a th:href="@{addEmployee}" class="btn">Add Employee</a>
+                <img th:src="@{/images/notification-bell.png}" alt="">
+                <div class="img-case">
+                    <img th:src="@{/images/user.png}" alt="">
+                </div>
+            </div>
+            <!-- <div class="user"></div> -->
+        </div>
+    </div>
     <div class="content">
         <div class="cards">
             <div class="card">

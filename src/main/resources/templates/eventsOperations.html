@@ -17,6 +17,8 @@
 <body>
 <div th:replace=" adminDashboard :: sidemenus"></div>
 <div class="container">
+    <div th:replace=" adminDashboard :: header-menu"></div>
+    <div class="content">
     <h3>Meetings List</h3>
     <hr/>
     <a th:href="@{/createEvent}" class="btn btn-pimary mb-2">New Event</a>
@@ -51,6 +53,7 @@
         </tr>
         </tbody>
     </table>
+</div>
 </div>
 <!--the data table scripts libraries-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

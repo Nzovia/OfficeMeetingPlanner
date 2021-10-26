@@ -17,9 +17,10 @@
 </head>
 <body>
 <div th:replace=" adminDashboard :: sidemenus"></div>
-<div th:replace=" header :: header-menu"></div>
-<div class="center">
 
+<div class="container">
+    <div th:replace=" adminDashboard :: header-menu"></div>
+<div class="center">
     <h2>Add new Employee</h2>
 <!--    <hr/>-->
     <div class="form">
@@ -73,7 +74,7 @@
 
 </div>
 
-
+</div>
 
 
 </body>
