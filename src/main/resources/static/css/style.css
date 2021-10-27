@@ -71,6 +71,7 @@ th,td{
     padding: 10px 40px;
     color: white;
     display: flex;
+    border-bottom: #666666;
     align-items: center;
 }
 .side-menu li img{
