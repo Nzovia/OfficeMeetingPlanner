@@ -1,6 +1,5 @@
 package com.nicholas.officemanager.controllers;
 
-import com.nicholas.officemanager.entitities.Employees;
 import com.nicholas.officemanager.entitities.Events;
 import com.nicholas.officemanager.repositories.EventsRepository;
 import org.springframework.beans.factory.annotation.Autowired;

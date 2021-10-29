@@ -1,76 +1,88 @@
 package com.nicholas.officemanager.entitities;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "employees")
 public class Users {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
-    @Column(length = 60, nullable = false, unique = true)
-    private String username;
-    @Column(length = 80, nullable = false)
-    private String password;
-    @Column(unique = true, length = 70, nullable = false)
-    private String employeeEmail;
-//    @ManyToOne
-//    private BoardRooms boardRooms;
-//    @OneToMany(mappedBy = "users")
-//    private List<Notifications> notifications= new ArrayList< >();
+    @Id()
+    @GeneratedValue(generator= "incrementId", strategy = GenerationType.IDENTITY)
+    private Long employeeId;
+    @Column(nullable = false,length = 60)
+    private String firstName;
+    @Column(nullable = false,length = 60)
+    private String secondName;
+    @Column(nullable = false,length = 60)
+    private String empgender;
+    @Column(unique = true, nullable = false,length = 60)
+    private String empphone;
+    @Column(unique = true, nullable = false,length = 60)
+    private String employee_email;
+
+//    @ManyToOne()
+//    @JoinColumn(name="organization_id")
+//    private Organization organization;
 //    @OneToOne()
-//    private  Employees employees;
-//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    @JoinTable(
-//            name = "user_roles",
-//            joinColumns = @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "role_id")
-//    )
-//    private Set<Roles> roles = new HashSet<>();
+//    private  Users users;
 
     public Users() {
     }
 
-    public Users(Long user_id, String username, String password, String employeeEmail) {
-        this.user_id = user_id;
-        this.username = username;
-        this.password = password;
-        this.employeeEmail = employeeEmail;
+    public Users(Long employeeId, String firstName, String secondName, String empgender,
+                 String empphone, String employee_email) {
+        this.employeeId = employeeId;
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.empgender = empgender;
+        this.empphone = empphone;
+        this.employee_email = employee_email;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public Long getEmployeeId() {
+        return employeeId;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setEmployeeId(Long employee_id) {
+        this.employeeId = employee_id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getSecondName() {
+        return secondName;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
     }
 
-    public String getEmployeeEmail() {
-        return employeeEmail;
+    public String getEmpgender() {
+        return empgender;
     }
 
-    public void setEmployeeEmail(String employeeEmail) {
-        this.employeeEmail = employeeEmail;
+    public void setEmpgender(String employee_gender) {
+        this.empgender = employee_gender;
+    }
+
+    public String getEmpphone() {
+        return empphone;
+    }
+
+    public void setEmpphone(String employee_phone) {
+        this.empphone = employee_phone;
+    }
+
+    public String getEmployee_email() {
+        return employee_email;
+    }
+
+    public void setEmployee_email(String employee_email) {
+        this.employee_email = employee_email;
     }
 }
