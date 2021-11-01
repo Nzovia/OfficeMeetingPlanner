@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>admin</title>
     <link  th:href = "@{/css/style.css}" rel="stylesheet">
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/27cb43b572.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -16,7 +18,14 @@
     <ul>
         <li><img th:src ="@{/images/dashboard.png}">&nbsp;<span>Dashboard </span>  </li>
         <li><a th:href="@{see_list}" th:target="_self"><img th:src="@{/images/Actions-user-properties-icon.png}">&nbsp; <span>Employees</span></a></li>
-        <li><a th:href="@{see_events}"><img th:src="@{/images/meetings.png}">&nbsp;<span>Meetings</span> </a></li>
+        <li><a href="#"><img th:src="@{/images/meetings.png}">&nbsp;Meetings
+            <span class="fas fa-caret-down"></span>
+        </a>
+                          <ul>
+                              <li><a th:href="@{see_events}" >Events</a> </li>
+                              <li><a th:href="@{calendar}" >Calendar</a> </li>
+                          </ul>
+        </li>
         <li><img th:src="@{/images/boardroom icon.png}" alt="">&nbsp; <span>Board Rooms</span>
 <!--              <ul>-->
 <!--                  <li><a href="#" >create</a> </li>-->
@@ -24,7 +33,7 @@
 <!--              </ul>-->
         </li>
         <li><img th:src="@{/images/communication.png}" alt="">&nbsp; <span>Communication</span></li>
-        <li><img th:src="@{/images/Calendar.png}" alt="">&nbsp; <span>Calendar</span></li>
+<!--        <li><img th:src="@{/images/Calendar.png}" alt="">&nbsp; <span>Calendar</span></li>-->
         <li><img th:src="@{/images/notification.png}" alt="">&nbsp; <span>Notifications</span></li>
         <li><img th:src="@{/images/help-web-button.png } " alt="">&nbsp; <span>LogOut</span></li>
 

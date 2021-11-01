@@ -66,7 +66,7 @@ th,td{
     align-items: center;
     justify-content: center;
 }
-.side-menu li{
+.side-menu ul li{
     font-size: 15px;
     padding: 10px 40px;
     color: white;
@@ -74,7 +74,7 @@ th,td{
     border-bottom: #666666;
     align-items: center;
 }
-.side-menu li img{
+.side-menu ul li img{
     size: 20px;
 }
 .side-menu li a{
@@ -82,10 +82,35 @@ th,td{
     display: flex;
 
 }
-.side-menu li:hover{
+.side-menu ul li:hover{
     background: white;
     color: #f05462;
 }
+.side-menu ul li ul{
+    position: static;
+    display: none;
+}
+.side-menu ul li ul li{
+    line-height: 42px;
+    border-bottom: none;
+}
+.side-menu ul li ul a{
+    font-size: 17px;
+    color: #e6e6e6;
+    padding-left: 80px;
+}
+.side-menu ul li ul a span{
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 22px;
+    transition: transform 0.4s;
+}
+.side-menu ul li ul a:hover span{
+    transform: translateY(-50%) rotate(180deg);
+}
+
 .container {
     position: absolute;
     right: 0;
