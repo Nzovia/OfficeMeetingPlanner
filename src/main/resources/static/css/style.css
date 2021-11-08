@@ -26,16 +26,16 @@ h3{
     color: grey;
 }
 .btn{
-    background: #725355;
+    background: #7a98ad;
     color: white;
     padding: 5px 10px;
     text-align: center;
 }
 .btn:hover{
-    color: #725355;
+    color: #7a98ad;
     background: white;
     padding: 3px 8px;
-    border: 2px solid #725355;
+    border: 2px solid #7a98ad;
 }
 .title{
     display: flex;
@@ -54,7 +54,7 @@ th,td{
 }
 .side-menu{
     position: fixed;
-    background: #7a98ad;
+    background:  #1E1F31;
     width: 20vw;
     min-height:100vh;
     display: flex;
@@ -72,45 +72,50 @@ th,td{
     color: white;
     display: flex;
     line-height: normal;
-    border-bottom: 1px #bb6262;
+    border-bottom: 1px #ffffff;
     align-items: center;
 }
 .side-menu ul li img{
     size: 20px;
 }
-.side-menu li a{
+.side-menu ul li a{
     color: #f1f1f1;
-    display: flex;
+    position: static;
+    text-decoration: none;
+    border-left: 3px solid transparent;
 
 }
 .side-menu ul li:hover{
-    background: white;
-    color: #f05462;
+    background: #272A4FFF;
+    color: #0d3fbe;
+    border-left-color: #272A4FFF;
 }
-.side-menu ul li ul{
-    position: static;
-    display: none;
-}
-.side-menu ul li ul li{
-    line-height: 42px;
-    border-bottom: none;
-}
-.side-menu ul li ul a{
-    font-size: 17px;
-    color: #e6e6e6;
-    padding-left: 80px;
-}
-.side-menu ul li ul a span{
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    font-size: 22px;
-    transition: transform 0.4s;
-}
-.side-menu ul li ul a:hover span{
-    transform: translateY(-50%) rotate(180deg);
-}
+/*.side-menu ul ul{*/
+/*    font-size: 18px;*/
+/*    padding-left: 40px;*/
+/*    display: none;*/
+/*    position: static;*/
+/*}*/
+/*.side-menu ul ul li{*/
+/*    line-height: 42px;*/
+/*    border-bottom: none;*/
+/*}*/
+/*.side-menu ul ul li a{*/
+/*    font-size: 17px;*/
+/*    color: #0d3fbe;*/
+/*    padding-left: 80px;*/
+/*}*/
+/*.side-menu ul ul li a span{*/
+/*    position: absolute;*/
+/*    top: 50%;*/
+/*    right: 20px;*/
+/*    transform: translateY(-50%);*/
+/*    font-size: 22px;*/
+/*    transition: transform 0.4s;*/
+/*}*/
+/*.side-menu ul li ul a:hover span{*/
+/*    transform: translateY(-50%) rotate(180deg);*/
+/*}*/
 
 .container {
     position: absolute;

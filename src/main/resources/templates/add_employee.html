@@ -24,7 +24,7 @@
     <h2>Add new Employee</h2>
 <!--    <hr/>-->
     <div class="form">
-    <form th:action="@{addEmployee}" th:object="${employees}"  method="post">
+    <form th:action="@{addEmployee}" th:object="${users}"  method="post">
         <div class="text_field">
             <input type="text" th:field="*{firstName}" required minlength="4" maxlength="20" />
             <span></span>
