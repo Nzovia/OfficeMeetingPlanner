@@ -19,7 +19,7 @@ public class EventsController {
     public ModelAndView createEvents(){
         ModelAndView modelAndView = new ModelAndView("createEvent");
         Events ourEvents = new Events();
-        modelAndView.addObject("meeting_event", ourEvents);
+        modelAndView.addObject("meeting_events", ourEvents);
 
         return modelAndView;
     }
@@ -32,14 +32,14 @@ public class EventsController {
     @GetMapping({ "/eventsOperations"})
     public ModelAndView getAllEmployees(){
         ModelAndView mov = new ModelAndView("eventsOperations");
-        mov.addObject("meeting_event", eventsRepo.findAll());
+        mov.addObject("meeting_events", eventsRepo.findAll());
         return mov;
     }
     @GetMapping("/update")
-    public ModelAndView showUpdate(@RequestParam Long employeeId){
+    public ModelAndView showUpdate(@RequestParam Long event_id){
         ModelAndView mov = new ModelAndView("createEvent");
-        Events ourEvents = eventsRepo.findById(employeeId).get();
-        mov.addObject("meeting_event", ourEvents);
+        Events ourEvents = eventsRepo.findById(event_id).get();
+        mov.addObject("meeting_events", ourEvents);
         return mov;
     }
     @GetMapping("/deleteEmployee")

@@ -17,31 +17,34 @@
     <div th:replace=" adminDashboard :: header-menu"></div>
     <div class="content">
     <h2>Create New Event</h2>
-    <hv/>
+    <hr/>
     <a th:href="@{/eventsOperations}">All events</a>
 <!--    <button class="btn btn-primary " type="submit">Create Event</button>-->
     <hr/>
 
-    <form th:action="@{addEvent}" th:object="${meeting_event}"  method="post">
+    <form th:action="@{addEvent}" th:object="${meeting_events}"  method="post">
         <div class="col-8">
             <input type="text" th:field="*{meeting_name}" placeholder="Meeting Title"
                    class="form control col-4 mb-4" required minlength="4"
                    maxlength="20" />
         </div>
         <div class="col-8">
-            <input type="text" th:field="*{start_time}" placeholder="Start Time"
+            <input type="time" th:field="*{start_time}" placeholder="Start Time"
                    class="form control col-4 mb-4" required minlength="4"
                    maxlength="20" />
         </div>
         <div class="col-8">
-            <input type="text" th:field="*{meeting_duration}" placeholder="Meeting Duration" class="form control col-4 mb-4"
-                   required minlength="4"
-                   maxlength="20"/>
+            <input type="time" th:field="*{end_time}" placeholder="Meeting Duration" class="form control col-4 mb-4"
+                   required =" "/>
+        </div>
+        <div class="col-8">
+            <input type="date" th:field="*{meeting_date}" placeholder="Date of Meeting" class="form control col-4 mb-4"
+                   required=""/>
         </div>
         <div class="col-8">
             <input type="text" th:field="*{event_description}" placeholder="Event Description" class="form control col-4 mb-4"
-                   required minlength="4"
-                   maxlength="20"/>
+                   required minlength="50"
+                   />
         </div>
         <div>
             <button class="btn btn-primary " type="submit">Create Event</button>

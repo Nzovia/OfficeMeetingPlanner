@@ -18,13 +18,13 @@
     <ul>
         <li><img th:src ="@{/images/dashboard.png}">&nbsp;<span>Dashboard </span>  </li>
         <li><a th:href="@{see_list}"><img th:src="@{/images/Actions-user-properties-icon.png}">&nbsp; <span>Employees</span></a></li>
-        <li><a th:href="@{eventsOperations}"><img th:src="@{/images/meetings.png}"><span>Events</span></a></li>
+        <li><a th:href="@{eventsOperations}"><img th:src="@{/images/meetings.png}"><span>Events</span></a>
 <!--            <span class="fas fa-caret-down"></span></a>-->
-<!--            <ul>-->
-<!--                <li><a th:href="@{see_events}" >Events</a> </li>-->
-<!--                <li><a th:href="@{calendar}" >Calendar</a> </li>-->
-<!--            </ul>-->
-
+            <ul>
+                <li><a th:href="@{eventsOperations}" >Events</a> </li>
+                <li><a th:href="@{calendar}" >Calendar</a> </li>
+            </ul>
+        </li>
         <li><img th:src="@{/images/Calendar.png}" alt=""><span>Calendar</span></li>
         <li><img th:src="@{/images/boardroom icon.png}" alt="">&nbsp; <span>Board Rooms</span>
 <!--              <ul>-->
@@ -115,17 +115,25 @@
 <!--                        <th>Action</th>-->
                     </tr>
                     </thead>
-                    <tbody>
-<!--                    <tr th:each="meeting_events: ${meeting_event}">-->
-<!--                        <td th:text="${meeting_events.events_id}"></td>-->
-<!--                        <td th:text="${meeting_events.meeting_name}"></td>-->
-<!--                        <td th:text="${meeting_events.start_time}"></td>-->
-<!--                        <td th:text="${meeting_events.meeting_duration}"></td>-->
-<!--                        <td th:text="${meeting_events.event_description}"></td>-->
-<!--                        <td th:text="${employee.employeeId}"></td>-->
-                        <td><a href="#" class="btn">see</a></td>
-                    </tr>
-                    </tbody>
+<!--                    <tbody>-->
+<!--                    <tr th:each="meeting_event: ${meeting_events}">-->
+<!--                        <td th:text="${meeting_event.events_id}"></td>-->
+<!--                        <td th:text="${meeting_event.meeting_name}"></td>-->
+<!--                        <td th:text="${meeting_event.start_time}"></td>-->
+<!--                        <td th:text="${meeting_event.end_time}"></td>-->
+<!--                        <td th:text="${meeting_event.meeting_date}"></td>-->
+<!--                        <td th:text="${meeting_event.event_description}"></td>-->
+
+
+<!--                        <td>-->
+<!--                            <a th:href="@{update (eventsId=${meeting_event.events_id})}" class="btn btn-info ">-->
+<!--                                Update</a>-->
+<!--                            <a th:href="@{deleteEmployee (eventsId=${meeting_event.events_id})}" class="btn btn-danger ml-2">-->
+<!--                                Delete</a>-->
+
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
                 </table>
             </div>
             <div class="new-employee">

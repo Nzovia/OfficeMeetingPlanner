@@ -21,7 +21,7 @@
     <div class="content">
     <h3>Meetings List</h3>
     <hr/>
-    <a th:href="@{/createEvent}" class="btn btn-pimary mb-2">New Event</a>
+    <a th:href="@{/see_events}" class="btn btn-pimary mb-2">New Event</a>
     <table border="1" class="table table-striped table-responsive-md" id="employeeTable">
 
         <thead>
@@ -29,25 +29,27 @@
             <th>Events Id</th>
             <th>Meeting Title</th>
             <th>StartTime</th>
-            <th>MeetingDuration</th>
+            <th>EndTime</th>
+            <th>MeetingDate</th>
             <th>MeetingDescription</th>
             <th>Actions</th>
         </tr>
         </thead>
 
         <tbody>
-        <tr th:each="meeting_events: ${meeting_event}">
-            <td th:text="${meeting_events.events_id}"></td>
-            <td th:text="${meeting_events.meeting_name}"></td>
-            <td th:text="${meeting_events.start_time}"></td>
-            <td th:text="${meeting_events.meeting_duration}"></td>
-            <td th:text="${meeting_events.event_description}"></td>
-            <!--                        <td th:text="${employee.employeeId}"></td>-->
-<!--            <td><a href="#" class="btn">see</a></td>-->
+        <tr th:each="meeting_event: ${meeting_events}">
+            <td th:text="${meeting_event.events_id}"></td>
+            <td th:text="${meeting_event.meeting_name}"></td>
+            <td th:text="${meeting_event.start_time}"></td>
+            <td th:text="${meeting_event.end_time}"></td>
+            <td th:text="${meeting_event.meeting_date}"></td>
+            <td th:text="${meeting_event.event_description}"></td>
+
+
             <td>
-                <a th:href="@{update (eventsId=${meeting_events.events_id})}" class="btn btn-info ">
+                <a th:href="@{update (eventsId=${meeting_event.events_id})}" class="btn btn-info ">
                     Update</a>
-                <a th:href="@{deleteEmployee (eventsId=${meeting_events.events_id})}" class="btn btn-danger ml-2">
+                <a th:href="@{deleteEmployee (eventsId=${meeting_event.events_id})}" class="btn btn-danger ml-2">
                     Delete</a>
 
             </td>
