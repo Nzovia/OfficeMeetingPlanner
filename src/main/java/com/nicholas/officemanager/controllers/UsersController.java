@@ -22,7 +22,7 @@ public class UsersController {
         }
         @GetMapping("/start_Activities")
         public String startActivities(){
-            return "/adminDashboard";
+            return "/adminDash";
         }
 
 

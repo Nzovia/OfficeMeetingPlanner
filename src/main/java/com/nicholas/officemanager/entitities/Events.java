@@ -13,14 +13,16 @@ public class Events {
     @Column(unique = true, nullable = false,length = 100)
     private String meeting_name;
     @Column(nullable = false)
-    private java.sql.Time start_time;
+    @Temporal(TemporalType.DATE)
+    private java.util.Date start_time;
     @Column(nullable = false)
-    private java.sql.Time end_time;
+    @Temporal(TemporalType.TIME)
+    private java.util.Date end_time;
     @Column (unique = true, nullable = false, length = 255)
     private String event_description;
     @Column(nullable = false)
-   // @Temporal(TemporalType.DATE)
-    private java.sql.Date meeting_date;
+    @Temporal(TemporalType.DATE)
+    private java.util.Date meeting_date;
 
 //    @OneToMany(mappedBy = "events")
 //    private Set<Resources> resources = new HashSet<>();
@@ -58,19 +60,19 @@ public class Events {
         this.meeting_name = meeting_name;
     }
 
-    public Time getStart_time() {
+    public java.util.Date getStart_time() {
         return start_time;
     }
 
-    public void setStart_time(Time start_time) {
+    public void setStart_time(java.util.Date start_time) {
         this.start_time = start_time;
     }
 
-    public Time getEnd_time() {
+    public java.util.Date getEnd_time() {
         return end_time;
     }
 
-    public void setEnd_time(Time end_time) {
+    public void setEnd_time(java.util.Date end_time) {
         this.end_time = end_time;
     }
 
@@ -82,23 +84,12 @@ public class Events {
         this.event_description = event_description;
     }
 
-    public Date getMeeting_date() {
+    public java.util.Date getMeeting_date() {
         return meeting_date;
     }
 
-    public void setMeeting_date(Date meeting_date) {
+    public void setMeeting_date(java.util.Date meeting_date) {
         this.meeting_date = meeting_date;
     }
 
-    @Override
-    public String toString() {
-        return "Events{" +
-                "events_id=" + events_id +
-                ", meeting_name='" + meeting_name + '\'' +
-                ", start_time=" + start_time +
-                ", end_time=" + end_time +
-                ", event_description='" + event_description + '\'' +
-                ", meeting_date=" + meeting_date +
-                '}';
-    }
 }

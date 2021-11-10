@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
 
-<head>
+<head >
     <meta charset="UTF-8">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
@@ -17,8 +17,11 @@
 <body>
 <div th:replace=" adminDashboard :: sidemenus"></div>
 <div class="container">
-    <div th:replace=" adminDashboard :: header-menu"></div>
-    <div class="content">
+    <div th:replace=" adminDashboard :: header-menu">
+
+    </div>
+    <div class="content" style="margin-left: 0; padding-left: 10px">
+
     <h3>List of employees</h3>
     <hr/>
     <a th:href="@{/addEmployee}" class="btn btn-primary mb-2">New Employee</a>
