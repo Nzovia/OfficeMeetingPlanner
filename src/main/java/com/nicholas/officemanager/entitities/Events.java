@@ -1,7 +1,7 @@
 package com.nicholas.officemanager.entitities;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Time;
 
 @Entity
@@ -14,15 +14,15 @@ public class Events {
     private String meeting_name;
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
-    private java.util.Date start_time;
+    private Date start_time;
     @Column(nullable = false)
     @Temporal(TemporalType.TIME)
-    private java.util.Date end_time;
+    private Date end_time;
     @Column (unique = true, nullable = false, length = 255)
     private String event_description;
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
-    private java.util.Date meeting_date;
+    private Date meeting_date;
 
 //    @OneToMany(mappedBy = "events")
 //    private Set<Resources> resources = new HashSet<>();
@@ -35,7 +35,7 @@ public class Events {
 
     }
 
-    public Events(Long events_id, String meeting_name, Time start_time, Time end_time, String event_description, Date meeting_date) {
+    public Events(Long events_id, String meeting_name, Date start_time, Date end_time, String event_description, Date meeting_date) {
         this.events_id = events_id;
         this.meeting_name = meeting_name;
         this.start_time = start_time;
@@ -60,19 +60,19 @@ public class Events {
         this.meeting_name = meeting_name;
     }
 
-    public java.util.Date getStart_time() {
+    public Date getStart_time() {
         return start_time;
     }
 
-    public void setStart_time(java.util.Date start_time) {
+    public void setStart_time(Date start_time) {
         this.start_time = start_time;
     }
 
-    public java.util.Date getEnd_time() {
+    public Date getEnd_time() {
         return end_time;
     }
 
-    public void setEnd_time(java.util.Date end_time) {
+    public void setEnd_time(Date end_time) {
         this.end_time = end_time;
     }
 
@@ -84,12 +84,11 @@ public class Events {
         this.event_description = event_description;
     }
 
-    public java.util.Date getMeeting_date() {
+    public Date getMeeting_date() {
         return meeting_date;
     }
 
-    public void setMeeting_date(java.util.Date meeting_date) {
+    public void setMeeting_date(Date meeting_date) {
         this.meeting_date = meeting_date;
     }
-
 }

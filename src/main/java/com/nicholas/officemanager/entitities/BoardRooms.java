@@ -16,6 +16,8 @@ public class BoardRooms {
     private String boardroom_name;
     @Column(nullable = false,length = 60)
     private String boardroom_capacity;
+    @Column(nullable = false,length = 60)
+    private String boardroom_resources;
 //    @OneToMany(mappedBy="boardRooms")
 //    private List<Users> users = new ArrayList<>();
 //    @OneToMany(mappedBy = "boardRooms")
@@ -24,10 +26,11 @@ public class BoardRooms {
     public BoardRooms() {
     }
 
-    public BoardRooms(Long boardroom_id, String boardroom_name, String boardroom_capacity) {
+    public BoardRooms(Long boardroom_id, String boardroom_name, String boardroom_capacity, String boardroom_resources) {
         this.boardroom_id = boardroom_id;
         this.boardroom_name = boardroom_name;
         this.boardroom_capacity = boardroom_capacity;
+        this.boardroom_resources = boardroom_resources;
     }
 
     public Long getBoardroom_id() {
@@ -52,5 +55,13 @@ public class BoardRooms {
 
     public void setBoardroom_capacity(String boardroom_capacity) {
         this.boardroom_capacity = boardroom_capacity;
+    }
+
+    public String getBoardroom_resources() {
+        return boardroom_resources;
+    }
+
+    public void setBoardroom_resources(String boardroom_resources) {
+        this.boardroom_resources = boardroom_resources;
     }
 }
