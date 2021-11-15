@@ -26,12 +26,9 @@ public class BoardRoomsController {
     }
     @PostMapping("/addRoom")
     public String createEvents(@ModelAttribute BoardRooms  rooms){
-        if(rooms != null){
             boardRoomsRepo.save(rooms);
-            return "add_rooms";
-        } else{
-            return "error_page";
-        }
+            return "add_rooms..";
+
 
 
     }

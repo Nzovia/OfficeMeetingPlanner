@@ -11,15 +11,18 @@
     <!--    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/css/bootstrap.min.css"/>-->
     <script type="text/javascript" src="webjars/bootstrap/js/boostrap.min.js"></script>
     <link rel="stylesheet" type="text/css" th:href="@{https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css}"/>
-    <link  th:href = "@{/css/style.css}" rel="stylesheet">
-    <link  th:href = "@{/css/formstyle.css}" rel="stylesheet">
+    <link  th:href = "@{/css/styles.css}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<!--    <link  th:href = "@{/css/formstyle.css}" rel="stylesheet">-->
     <title>Add new employees</title>
 </head>
 <body>
-<div th:replace=" adminDashboard :: sidemenus"></div>
-
-<div class="container">
-    <div th:replace=" adminDashboard :: header-menu"></div>
+<div class="wrapper">
+    <div th:replace=" adminDash :: sidemenus"></div>
+    <div class="main_content">
+        <!--    <div th:replace=" adminDashboard :: header-menu">-->
+        <div class="header">Welcome!!</div>
+        <div class="info">
 <div class="center">
     <h2>Add new Employee</h2>
 <!--    <hr/>-->
@@ -71,7 +74,8 @@
     <div class="externallist">
     <a th:href="@{/list_employees}">back to list</a>
     </div>
-
+</div>
+        </div>
 </div>
 
 </div>

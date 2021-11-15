@@ -1,17 +1,18 @@
-body{
-    margin: 0;
-    padding: 0;
-    font-family: montstreat;
-    height: 100vh;
-    overflow: hidden;
-}
+/*body{*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    font-family: montstreat;*/
+/*    height: 100vh;*/
+/*    overflow: hidden;*/
+/*}*/
 /*background: linear-gradient(120deg, #2980b9, #8e44ad);*/
 .center{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
+    margin-top: 30px;
+    /*transform: translate(-50%, -50%);*/
+    width: 500px;
     background: #f1f1f1;
     border-radius: 10px;
 }
