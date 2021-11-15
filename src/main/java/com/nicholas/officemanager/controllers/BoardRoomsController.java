@@ -26,9 +26,9 @@ public class BoardRoomsController {
     }
     @PostMapping("/addRoom")
     public String createEvents(@ModelAttribute BoardRooms  rooms){
-        if(rooms == null){
+        if(rooms != null){
             boardRoomsRepo.save(rooms);
-            return "redirect: /addRoom";
+            return "add_rooms";
         } else{
             return "error_page";
         }
@@ -38,7 +38,7 @@ public class BoardRoomsController {
     @GetMapping("/addRooms")
     public ModelAndView getAllRooms(){
         ModelAndView mov = new ModelAndView("add_rooms");
-        mov.addObject("my_rooms", boardRoomsRepo.findAll());
+        mov.addObject("myRooms", boardRoomsRepo.findAll());
         return mov;
     }
     @GetMapping("/roomUpdate")
@@ -51,7 +51,7 @@ public class BoardRoomsController {
     @GetMapping("/roomDelete")
     public String showDeleteEmployee(@RequestParam Long employeeId){
         boardRoomsRepo.deleteById(employeeId);
-        return "redirect: /list_employees";
+        return "redirect: /";
     }
 
 }

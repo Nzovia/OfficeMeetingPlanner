@@ -77,15 +77,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="boardroom: ${my_rooms}">
+        <tr th:each="boardroom: ${myRooms}">
+            <!--/*@thymesVar id="boardroom_id" type=""*/-->
             <td th:text="${boardroom.boardroom_id}"></td>
             <td th:text="${boardroom.boardroom_name}"></td>
             <td th:text="${boardroom.boardroom_capacity}"></td>
             <td th:text="${boardroom.boardroom_resources}"></td>
             <td>
-                <a th:href="@{roomUpdate (roomid=${rooms.boardroom_id})}" class="btn btn-info ">
+                <a th:href="@{roomUpdate (roomid=${boardroom.boardroom_id})}" class="btn btn-info ">
                     Update</a>
-                <a th:href="@{roomDelete (employeeId=${rooms.boardroom_id})}" class="btn btn-danger ml-2">
+                <a th:href="@{roomDelete (employeeId=${boardroom.boardroom_id})}" class="btn btn-danger ml-2">
                     Delete</a>
 
             </td>

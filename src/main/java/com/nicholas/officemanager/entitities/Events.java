@@ -1,6 +1,10 @@
 package com.nicholas.officemanager.entitities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 import java.sql.Time;
 
@@ -13,16 +17,16 @@ public class Events {
     @Column(unique = true, nullable = false,length = 100)
     private String meeting_name;
     @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date start_time;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    private java.time.LocalTime start_time;
     @Column(nullable = false)
-    @Temporal(TemporalType.TIME)
-    private Date end_time;
-    @Column (unique = true, nullable = false, length = 255)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    public java.time.LocalTime end_time;
+    @Column(nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private java.time.LocalDate meeting_date;
+    @Column (nullable = false, length = 255)
     private String event_description;
-    @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date meeting_date;
 
 //    @OneToMany(mappedBy = "events")
 //    private Set<Resources> resources = new HashSet<>();
@@ -35,13 +39,13 @@ public class Events {
 
     }
 
-    public Events(Long events_id, String meeting_name, Date start_time, Date end_time, String event_description, Date meeting_date) {
+    public Events(Long events_id, String meeting_name, LocalTime start_time, LocalTime end_time, LocalDate meeting_date, String event_description) {
         this.events_id = events_id;
         this.meeting_name = meeting_name;
         this.start_time = start_time;
         this.end_time = end_time;
-        this.event_description = event_description;
         this.meeting_date = meeting_date;
+        this.event_description = event_description;
     }
 
     public Long getEvents_id() {
@@ -60,20 +64,28 @@ public class Events {
         this.meeting_name = meeting_name;
     }
 
-    public Date getStart_time() {
+    public LocalTime getStart_time() {
         return start_time;
     }
 
-    public void setStart_time(Date start_time) {
+    public void setStart_time(LocalTime start_time) {
         this.start_time = start_time;
     }
 
-    public Date getEnd_time() {
+    public LocalTime getEnd_time() {
         return end_time;
     }
 
-    public void setEnd_time(Date end_time) {
+    public void setEnd_time(LocalTime end_time) {
         this.end_time = end_time;
+    }
+
+    public LocalDate getMeeting_date() {
+        return meeting_date;
+    }
+
+    public void setMeeting_date(LocalDate meeting_date) {
+        this.meeting_date = meeting_date;
     }
 
     public String getEvent_description() {
@@ -82,13 +94,5 @@ public class Events {
 
     public void setEvent_description(String event_description) {
         this.event_description = event_description;
-    }
-
-    public Date getMeeting_date() {
-        return meeting_date;
-    }
-
-    public void setMeeting_date(Date meeting_date) {
-        this.meeting_date = meeting_date;
     }
 }

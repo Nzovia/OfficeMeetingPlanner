@@ -25,8 +25,14 @@ public class EventsController {
     }
     @PostMapping("/addEvent")
     public String createEvents(@ModelAttribute Events  meeting_event){
-        eventsRepo.save(meeting_event);
-        return "redirect:/createEvent";
+//        if(meeting_event.end_time <= meeting_event.start_time){
+            eventsRepo.save(meeting_event);
+            return "redirect:/eventsOperations";
+//        }else {
+//            //make a toast and return to creation page
+//            return "createEvent";
+//        }
+
 
     }
     @GetMapping({ "/eventsOperations"})
@@ -36,9 +42,9 @@ public class EventsController {
         return mov;
     }
     @GetMapping("/update")
-    public ModelAndView showUpdate(@RequestParam Long event_id){
+    public ModelAndView showUpdate(@RequestParam Long eventsId){
         ModelAndView mov = new ModelAndView("createEvent");
-        Events ourEvents = eventsRepo.findById(event_id).get();
+        Events ourEvents = eventsRepo.findById(eventsId).get();
         mov.addObject("meeting_events", ourEvents);
         return mov;
     }
