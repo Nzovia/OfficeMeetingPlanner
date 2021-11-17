@@ -20,17 +20,19 @@ public class BoardRooms {
     private String boardroom_resources;
 //    @OneToMany(mappedBy="boardRooms")
 //    private List<Users> users = new ArrayList<>();
-//    @OneToMany(mappedBy = "boardRooms")
-//    private Set<Events> events= new HashSet<>();
+    @OneToMany(mappedBy = "boardRooms")
+    private Set<Events> events= new HashSet<>();
 
     public BoardRooms() {
     }
 
-    public BoardRooms(Long boardroom_id, String boardroom_name, String boardroom_capacity, String boardroom_resources) {
+    public BoardRooms(Long boardroom_id, String boardroom_name, String boardroom_capacity,
+                      String boardroom_resources, Set<Events> events) {
         this.boardroom_id = boardroom_id;
         this.boardroom_name = boardroom_name;
         this.boardroom_capacity = boardroom_capacity;
         this.boardroom_resources = boardroom_resources;
+        this.events = events;
     }
 
     public Long getBoardroom_id() {
@@ -63,5 +65,13 @@ public class BoardRooms {
 
     public void setBoardroom_resources(String boardroom_resources) {
         this.boardroom_resources = boardroom_resources;
+    }
+
+    public Set<Events> getEvents() {
+        return events;
+    }
+
+    public void setEvents(Set<Events> events) {
+        this.events = events;
     }
 }

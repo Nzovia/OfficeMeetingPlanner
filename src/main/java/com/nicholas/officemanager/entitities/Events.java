@@ -30,22 +30,24 @@ public class Events {
 
 //    @OneToMany(mappedBy = "events")
 //    private Set<Resources> resources = new HashSet<>();
-//    @ManyToOne
-//    @JoinColumn(name = "events")
-//    private BoardRooms boardRooms;
+    @ManyToOne
+    @JoinColumn(name = "rooms")
+    private BoardRooms boardRooms;
 
 
     public Events() {
 
     }
 
-    public Events(Long events_id, String meeting_name, LocalTime start_time, LocalTime end_time, LocalDate meeting_date, String event_description) {
+    public Events(Long events_id, String meeting_name, LocalTime start_time, LocalTime end_time,
+                  LocalDate meeting_date, String event_description, BoardRooms boardRooms) {
         this.events_id = events_id;
         this.meeting_name = meeting_name;
         this.start_time = start_time;
         this.end_time = end_time;
         this.meeting_date = meeting_date;
         this.event_description = event_description;
+        this.boardRooms = boardRooms;
     }
 
     public Long getEvents_id() {
@@ -94,5 +96,13 @@ public class Events {
 
     public void setEvent_description(String event_description) {
         this.event_description = event_description;
+    }
+
+    public BoardRooms getBoardRooms() {
+        return boardRooms;
+    }
+
+    public void setBoardRooms(BoardRooms boardRooms) {
+        this.boardRooms = boardRooms;
     }
 }

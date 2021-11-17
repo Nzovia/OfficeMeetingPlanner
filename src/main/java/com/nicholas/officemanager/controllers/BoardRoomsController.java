@@ -27,9 +27,7 @@ public class BoardRoomsController {
     @PostMapping("/addRoom")
     public String createEvents(@ModelAttribute BoardRooms  rooms){
             boardRoomsRepo.save(rooms);
-            return "add_rooms..";
-
-
+            return "add_rooms";
 
     }
     @GetMapping("/addRooms")

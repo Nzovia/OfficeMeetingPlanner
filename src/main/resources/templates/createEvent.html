@@ -45,10 +45,19 @@
                    required=""/>
         </div>
         <div class="col-8">
+            <td><select name="boardroom_name" id="boardroom_id" class="form control col-4 mb-4" required>
+                <option th:each="boardRooms: ${boardRoom}"
+                        th:value="${boardRooms.boardroom_id}"
+                        th:text="${boardRooms.boardroom_name}"
+                /></select>
+            </td>
+        </div>
+        <div class="col-8">
             <textarea type="text" th:field="*{event_description}" placeholder="Event Description" class="form control col-4 mb-4"
                     minlength="10"
                    />
         </div>
+
         <div>
             <button class="btn btn-primary " type="submit">Create Event</button>
         </div>
