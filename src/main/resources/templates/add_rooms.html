@@ -45,18 +45,18 @@
     <h2>Room Management</h2>
     <hr>
     <div class="roomRegister">
-    <form class="form-horizontal" th:action="@{addRoom}" th:object="${my_rooms}" method="post">
+    <form class="form-horizontal" th:action="@{/addRoom}" th:object="${my_rooms}" method="post">
 <!--        my_rooms is the attributename from the controller object attached to the entity object-->
         <div class="form-group">
             <label class="control-label col-sm-2">Room Name:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="*{boardroom_name}">
+                <input type="text" class="form-control" th:field="*{boardroom_name}" required>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2">Room Capacity:</label>
             <div class="col-sm-10">
-                <input type="number" class="form-control" th:field="*{boardroom_capacity}">
+                <input type="number" class="form-control" th:field="*{boardroom_capacity}" required=" ">
             </div>
         </div>
         <div class="form-group">
@@ -73,6 +73,7 @@
         </div>
     </form>
 </div>
+<!--         <a th:href="@{/viewRooms}">See Rooms</a>-->
 <div class="blockList">
     <table >
         <thead>
@@ -85,18 +86,21 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="boardroom: ${myRooms}">
+        <tr th:each="boardroom: ${addingRooms}">
             <!--/*@thymesVar id="boardroom_id" type=""*/-->
             <td th:text="${boardroom.boardroom_id}"></td>
             <td th:text="${boardroom.boardroom_name}"></td>
             <td th:text="${boardroom.boardroom_capacity}"></td>
             <td th:text="${boardroom.boardroom_resources}"></td>
             <td>
-                <a th:href="@{roomUpdate (roomid=${boardroom.boardroom_id})}" class="btn btn-info ">
+                <a th:href="@{roomUpdate (boardroom_id=${boardroom.boardroom_id})}" class="btn btn-info ">
                     Update</a>
-                <a th:href="@{roomDelete (employeeId=${boardroom.boardroom_id})}" class="btn btn-danger ml-2">
+                <a th:href="@{roomDelete (boardroom_id=${boardroom.boardroom_id})}" class="btn btn-danger ml-2">
                     Delete</a>
 
+
+<!--                <a th:href="@{showUpdate (employeeId=${employee.employeeId})}" class="btn btn-info ">-->
+<!--                    Update</a>-->
             </td>
         </tr>
 

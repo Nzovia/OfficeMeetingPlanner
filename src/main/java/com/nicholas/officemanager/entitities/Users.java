@@ -1,6 +1,8 @@
 package com.nicholas.officemanager.entitities;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "employees")
@@ -24,26 +26,23 @@ public class Users {
 //    private Organization organization;
 //    @OneToOne()
 //    private  Users users;
+    @ManyToMany
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn (name = "employeeId"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set <Roles> roles = new HashSet<>();
 
     public Users() {
-    }
-
-    public Users(Long employeeId, String firstName, String secondName, String empgender,
-                 String empphone, String employee_email) {
-        this.employeeId = employeeId;
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.empgender = empgender;
-        this.empphone = empphone;
-        this.employee_email = employee_email;
     }
 
     public Long getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(Long employee_id) {
-        this.employeeId = employee_id;
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
     }
 
     public String getFirstName() {
@@ -66,16 +65,16 @@ public class Users {
         return empgender;
     }
 
-    public void setEmpgender(String employee_gender) {
-        this.empgender = employee_gender;
+    public void setEmpgender(String empgender) {
+        this.empgender = empgender;
     }
 
     public String getEmpphone() {
         return empphone;
     }
 
-    public void setEmpphone(String employee_phone) {
-        this.empphone = employee_phone;
+    public void setEmpphone(String empphone) {
+        this.empphone = empphone;
     }
 
     public String getEmployee_email() {
@@ -84,5 +83,13 @@ public class Users {
 
     public void setEmployee_email(String employee_email) {
         this.employee_email = employee_email;
+    }
+
+    public Set<Roles> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Roles> roles) {
+        this.roles = roles;
     }
 }

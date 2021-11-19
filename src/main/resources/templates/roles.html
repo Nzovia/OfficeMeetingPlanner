@@ -42,33 +42,33 @@
         <div class="info">
             <div class="container">
                 <hr>
-                <h2>Register Organization</h2>
+                <h2>User Roles</h2>
                 <hr>
                 <div class="roomRegister">
-                    <form class="form-horizontal" th:action="@{/addOrganization}" th:object="${organization}" method="post">
+                    <form class="form-horizontal" th:action="@{/addRole}" th:object="${roles}" method="post">
                         <!--        my_rooms is the attributename from the controller object attached to the entity object-->
                         <div class="form-group">
-                            <label class="control-label col-sm-2">Organization Name:</label>
+                            <label class="control-label col-sm-2">Role:</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" th:field="*{organization_name}" required=" " minlength="5">
+                                <input type="text" class="form-control" th:field="*{roleTitle}" required=" " minlength="4">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2">Organization Description:</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" th:field="*{organization_description}">
-                            </div>
-                        </div>
+<!--                        <div class="form-group">-->
+<!--                            <label class="control-label col-sm-2">Organization Description:</label>-->
+<!--                            <div class="col-sm-10">-->
+<!--                                <input type="text" class="form-control" th:field="*{organization_description}">-->
+<!--                            </div>-->
+<!--                        </div>-->
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">Submit</button>
+                                <button type="submit" class="btn btn-default">Add</button>
                             </div>
                         </div>
                     </form>
                 </div>
-                </div>
             </div>
+        </div>
     </div>
 </div>
 </body>
