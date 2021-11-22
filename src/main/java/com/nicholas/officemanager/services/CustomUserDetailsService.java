@@ -9,15 +9,20 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 public class CustomUserDetailsService implements UserDetailsService {
-    //pass an object of userRepository
+    //create an instance of userRepository
     @Autowired
-    private UsersRepository userRepository;
+    private UsersRepository userRepo;
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Users user = userRepository.findByEmail(email);
-        if(user == null){
-            throw  new UsernameNotFoundException("user not found");
+        //inside here declare a method to find user by email that returns a single user object since the email is unique
+        //to achieve that you to create a query in the repo o select users by email
+        Users user = userRepo.findByEmail(email);
+
+        if (user == null){
+            throw new UsernameNotFoundException("email not valid");
         }
+        //if user email is valid then....the following is returned (new CustomUserDetails overlapping user object)
         return new CustomUserDetails(user);
     }
-}
+    }
+

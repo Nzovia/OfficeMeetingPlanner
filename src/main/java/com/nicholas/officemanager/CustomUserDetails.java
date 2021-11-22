@@ -1,30 +1,33 @@
 package com.nicholas.officemanager;
+
 import com.nicholas.officemanager.entitities.Users;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-public class CustomUserDetails implements UserDetails {// it implements UserDetails interface implemented by Spring Security
-    private Users user;
-
-    public CustomUserDetails(Users user) {
-        this.user = user;
+public class CustomUserDetails  implements UserDetails {
+    //CustomeUserDetails wraps an instance of Users(entity class)
+    private Users users;
+    //generate a constructor
+    public CustomUserDetails(Users users) {
+        this.users = users;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        //here you will return the roles, you have once implemented
         return null;
     }
 
     @Override
     public String getPassword() {
-        return user.getEmpphone();
+        return users.getEmpPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getEmployee_email();
+        return users.getEmployee_email();
     }
 
     @Override
@@ -45,5 +48,8 @@ public class CustomUserDetails implements UserDetails {// it implements UserDeta
     @Override
     public boolean isEnabled() {
         return true;
+    }
+    public String getFullName(){
+        return getUsername();
     }
 }

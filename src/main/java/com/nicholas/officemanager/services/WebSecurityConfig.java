@@ -16,60 +16,45 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private DataSource dataSource; //connect user database for authentication
-    @Bean // for user details service class
+    @Autowired //note the datasource is for javax.sql
+    private DataSource dataSource;
+
+    @Bean
     public UserDetailsService userDetailsService(){
-        return new  CustomUserDetailsService();
+        return new CustomUserDetailsService();
     }
-    @Bean //for password enconder
-    public BCryptPasswordEncoder passwordEncoder(){
-        //bYCrypt recommended since it provides better and strong password encording
-        return new BCryptPasswordEncoder();
-
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder(){
+        return  new BCryptPasswordEncoder();
     }
-    @Bean//for DAO Authentication provider
-    public DaoAuthenticationProvider authenticationProvider(){
+    @Bean
+    public DaoAuthenticationProvider daoAuthenticationProvider(){
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-
-        //here set the authentication details
         authProvider.setUserDetailsService(userDetailsService());
-        authProvider.setPasswordEncoder(passwordEncoder());
-
-        return authProvider;
+        authProvider.setPasswordEncoder(bCryptPasswordEncoder());
+        return  authProvider;
     }
-   /*Note: to configure spring security we need to override several methods,
-    Configure(HTTpSecurity, AuthenticationManagerBuilder and in it set
-    authentication provider for the auth object of the authenticationProviderMethod)
-   */
-
+    //there to configure spring security for authentication we need to configure(override) some methods
+    //i.e configure(HttpSecurity) and configure(AuthenticationManagerBuilder()
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider()); //configure authenticationProvider object of the
-        // authenticationProvider method
+//      super.configure(auth); configure the authentication provider
+        auth.authenticationProvider(daoAuthenticationProvider());
     }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //here in configure http we configure the log in and log out for the application
+//        super.configure(http); here we configure the login and the logout for the application
         http.authorizeRequests()
-                //list all the users registered on the website, there we use antmatchers to match with the url
-                .antMatchers("/adminDash").authenticated()
-                //. authenticated means for you to view this page
-                // you have to be authenticated since it is protected by spring security
+                .antMatchers("/start_Activities").authenticated()//means you have to be authenticated to view this page
                 .anyRequest().permitAll()
                 .and()
-                // configuring to the login page we used before or provided by spring security
-                .formLogin()
+                .formLogin()// using the default login page provided by spring security
                 .usernameParameter("email")
-                //landing page for the user on successful login
-                .defaultSuccessUrl("/adminDash")
+                .defaultSuccessUrl("/start_Activities")
                 .permitAll()
-                //implementing logout
+                //for the logout
                 .and()
-                .logout().logoutSuccessUrl("/").permitAll();
-
-
-
+                .logout().logoutSuccessUrl("/index").permitAll();
     }
+
 }

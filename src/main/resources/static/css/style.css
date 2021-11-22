@@ -126,10 +126,10 @@ th,td{
 }
 .container .header{
     position: fixed;
+    height: 10vh;
     top: 0;
     right:0;
     width: 80vw;
-    height: 10vh;
     background: white;
     display: flex;
     align-items: center;

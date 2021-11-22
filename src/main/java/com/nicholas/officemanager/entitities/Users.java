@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "employees")
+@Table(name = "users")
 public class Users {
     @Id()
     @GeneratedValue(generator= "incrementId", strategy = GenerationType.IDENTITY)
@@ -20,6 +20,8 @@ public class Users {
     private String empphone;
     @Column(unique = true, nullable = false,length = 60)
     private String employee_email;
+    @Column(unique = true, nullable = false,length = 60)
+    private String empPassword;
 
 //    @ManyToOne()
 //    @JoinColumn(name="organization_id")
@@ -83,6 +85,14 @@ public class Users {
 
     public void setEmployee_email(String employee_email) {
         this.employee_email = employee_email;
+    }
+
+    public String getEmpPassword() {
+        return empPassword;
+    }
+
+    public void setEmpPassword(String empPassword) {
+        this.empPassword = empPassword;
     }
 
     public Set<Roles> getRoles() {
