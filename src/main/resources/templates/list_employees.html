@@ -21,23 +21,23 @@
 <div class="main_content">
 <!--    <div th:replace=" adminDashboard :: header-menu">-->
     <div class="header">
-        Welcome!!
+
         <div class="nav">
-<!--            <div>-->
-<!--                <form th:action="@{/logout}" method="post">-->
-<!--            <p>Logged in as-->
-<!--            <b>[[${#request.userPrincipal.principal.fullName}]]</b>-->
-<!--            </p>-->
-<!--                </form>-->
-<!--            </div>-->
-        <div class="user" >
-            <div class="notif">
-            <img th:src="@{/images/notification-bell.png}" alt="">
+            <div>
+                <form th:action="@{/logout}" method="post">
+                    <p>Logged in as
+                        <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+                    </p>
+                </form>
             </div>
-            <div class="img-case">
-                <img th:src="@{/images/user.png}" alt="">
+            <div class="user" >
+                <div class="notif">
+                    <img th:src="@{/images/notification-bell.png}" alt="">
+                </div>
+                <div class="img-case">
+                    <img th:src="@{/images/user.png}" alt="">
+                </div>
             </div>
-        </div>
         </div>
     </div>
     <div class="info">
@@ -72,11 +72,11 @@
             <td th:text="${employee.empphone}"></td>
             <td th:text="${employee.employee_email}"></td>
 <!--            <td th:text="${employee.empPassword}"></td>-->
-            <td th:text="${employee.roles}"></td>
+            <td  th:each="role : ${employee.roles}" th:text="${role.roleTitle}"></td>
             <td>
-                <a th:href="@{showUpdate (employeeId=${employee.employeeId})}" class="btn btn-info ">
+                <a th:href="@{showUpdate (employeeId=${employee.employeeId})}" class="btn btn-info btn-sm">
                     Update</a>
-                <a th:href="@{showDeleteEmployee (employeeId=${employee.employeeId})}" class="btn btn-danger ml-2">
+                <a th:href="@{showDeleteEmployee (employeeId=${employee.employeeId})}" class="btn btn-danger ml-2 btn-sm">
                     Delete</a>
 
             </td>

@@ -38,14 +38,33 @@
     <div th:replace=" adminDash :: sidemenus"></div>
     <div class="main_content">
         <!--    <div th:replace=" adminDashboard :: header-menu">-->
-        <div class="header">Welcome!!</div>
+        <div class="header">
+
+            <div class="nav">
+                <div>
+                    <form th:action="@{/logout}" method="post">
+                        <p>Logged in as
+                            <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+                        </p>
+                    </form>
+                </div>
+                <div class="user" >
+                    <div class="notif">
+                        <img th:src="@{/images/notification-bell.png}" alt="">
+                    </div>
+                    <div class="img-case">
+                        <img th:src="@{/images/user.png}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="info">
             <div class="container">
                 <hr>
                 <h2>User Roles</h2>
                 <hr>
                 <div class="roomRegister">
-                    <form class="form-horizontal" th:action="@{/addRole}" th:object="${roles}" method="post">
+                    <form class="form-horizontal" th:action="@{/addRole}" th:object="${userRoles}" method="post">
                         <!--        my_rooms is the attributename from the controller object attached to the entity object-->
                         <div class="form-group">
                             <label class="control-label col-sm-2">Role:</label>

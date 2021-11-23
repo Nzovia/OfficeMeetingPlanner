@@ -28,12 +28,23 @@
 <!--        </div>-->
     </div>
     <div class="main_content">
-        <div class="header">Welcome!! Have a nice day
-            <div class="user">
-<!--                <a th:href="@{addEmployee}" class="btn">Add Employee</a>-->
-                <img th:src="@{/images/notification-bell.png}" alt="">
-                <div class="img-case">
-                    <img th:src="@{/images/user.png}" alt="">
+        <div class="header">
+
+            <div class="nav">
+                <div>
+                    <form th:action="@{/logout}" method="post">
+                        <p>Logged in as
+                            <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+                        </p>
+                    </form>
+                </div>
+                <div class="user" >
+                    <div class="notif">
+                        <img th:src="@{/images/notification-bell.png}" alt="">
+                    </div>
+                    <div class="img-case">
+                        <img th:src="@{/images/user.png}" alt="">
+                    </div>
                 </div>
             </div>
         </div>

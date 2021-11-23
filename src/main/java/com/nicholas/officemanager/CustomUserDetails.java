@@ -1,10 +1,15 @@
 package com.nicholas.officemanager;
 
+import com.nicholas.officemanager.entitities.Roles;
 import com.nicholas.officemanager.entitities.Users;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 public class CustomUserDetails  implements UserDetails {
     //CustomeUserDetails wraps an instance of Users(entity class)
@@ -17,7 +22,15 @@ public class CustomUserDetails  implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         //here you will return the roles, you have once implemented
-        return null;
+        Set<Roles> roles = users.getRoles();
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+
+        //iterate through all the roles
+        for(Roles role : roles){
+            authorities.add(new SimpleGrantedAuthority(role.getRoleTitle()));
+        }
+
+        return authorities;
     }
 
     @Override

@@ -20,7 +20,7 @@ public class Rolescontoller {
     public ModelAndView createRole(){
         ModelAndView mode = new ModelAndView("roles");
         Roles userRoles = new Roles();
-        mode.addObject("roles",userRoles);
+        mode.addObject("userRoles",userRoles);
         return mode;
     }
     @PostMapping("/addRole")

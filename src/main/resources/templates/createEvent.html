@@ -17,7 +17,26 @@
     <div th:replace=" adminDash :: sidemenus"></div>
     <div class="main_content">
         <!--    <div th:replace=" adminDashboard :: header-menu">-->
-        <div class="header">Welcome!!</div>
+        <div class="header">
+
+            <div class="nav">
+                <div>
+                    <form th:action="@{/logout}" method="post">
+                        <p>Logged in as
+                            <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+                        </p>
+                    </form>
+                </div>
+                <div class="user" >
+                    <div class="notif">
+                        <img th:src="@{/images/notification-bell.png}" alt="">
+                    </div>
+                    <div class="img-case">
+                        <img th:src="@{/images/user.png}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="info">
     <h2>Create New Event</h2>
     <hr/>

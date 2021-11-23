@@ -28,7 +28,7 @@ public class Users {
 //    private Organization organization;
 //    @OneToOne()
 //    private  Users users;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_roles",
             joinColumns = @JoinColumn (name = "employeeId"),
@@ -101,5 +101,19 @@ public class Users {
 
     public void setRoles(Set<Roles> roles) {
         this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "employeeId=" + employeeId +
+                ", firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", empgender='" + empgender + '\'' +
+                ", empphone='" + empphone + '\'' +
+                ", employee_email='" + employee_email + '\'' +
+                ", empPassword='" + empPassword + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 }

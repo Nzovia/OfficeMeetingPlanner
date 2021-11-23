@@ -65,14 +65,14 @@
             <label>Employee Password</label>
         </div>
         <div class="dropdown">
-            <select name="roleTitle" id="role_id" th:text="${roles}">
-                <option th:each="roles: ${roles}"
-                        th:value="${roles.role_id}"
-                        th:text="${roles.roleTitle}"/>
+            <select name="roleTitle" id="role_id" th:field="*{roles}">
+                <th:block th:each="userRoles: ${roless}">
+                <option
+                        th:value="${userRoles.role_id}"
+                        th:text="${userRoles.roleTitle}"/>
+                </th:block>
             </select>
-<!--            <input type="text" th:field="*{roles}" required minlength="4" maxlength="20" />-->
-            <span></span>
-            <label>Employee Role</label>
+
         </div>
         <div class="pass">
             <input type="submit" value="Register">
