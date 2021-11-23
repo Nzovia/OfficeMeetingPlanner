@@ -45,16 +45,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 //        super.configure(http); here we configure the login and the logout for the application
         http.authorizeRequests()
-                .antMatchers("/start_Activities").authenticated()//means you have to be authenticated to view this page
-                .anyRequest().permitAll()
+                .antMatchers("/").permitAll()
+                .antMatchers("/start_Activities").hasAuthority("Co-Admin")
+                .antMatchers("/see_events").hasAuthority("User")
+                .anyRequest().authenticated()
                 .and()
-                .formLogin()// using the default login page provided by spring security
+                //.antMatchers("/start_Activities").authenticated()//means you have to be authenticated to view this page
+//                .anyRequest().permitAll()
+//                .and()
+
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()// using the default login page provided by spring security
                 .usernameParameter("email")
-                .defaultSuccessUrl("/start_Activities")
-                .permitAll()
+//                .defaultSuccessUrl("/start_Activities")
+//                .permitAll()
                 //for the logout
                 .and()
-                .logout().logoutSuccessUrl("/index").permitAll();
+                .logout().logoutSuccessUrl("/index").permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/403");
     }
 
 }

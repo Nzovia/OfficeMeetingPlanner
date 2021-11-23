@@ -35,6 +35,11 @@ public class UsersController {
             return "/adminDash";
         }
 
+        @GetMapping("/login")
+        public String loginHere(){
+        return "/customizedLogin";
+    }
+
     //add users into the database
         @GetMapping({"/showEmployees","/list_employees","/see_list"})
         public ModelAndView getAllEmployees(){
