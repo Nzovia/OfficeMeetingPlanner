@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -42,23 +43,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(daoAuthenticationProvider());
     }
     @Override
+    public  void configure(WebSecurity webSecurity){
+        webSecurity.ignoring().antMatchers("/css/**","/js/**");
+    }
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
 //        super.configure(http); here we configure the login and the logout for the application
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/start_Activities").hasAuthority("Co-Admin")
-                .antMatchers("/see_events").hasAuthority("User")
+                .antMatchers("/start_Activities").authenticated()//means you have to be authenticated to view this page
+                .antMatchers("/start_Activities").hasAnyAuthority("User","Co-Admin")
+                .antMatchers("/see_list").hasAuthority("Co-Admin")
                 .anyRequest().authenticated()
                 .and()
-                //.antMatchers("/start_Activities").authenticated()//means you have to be authenticated to view this page
-//                .anyRequest().permitAll()
-//                .and()
-
                 .formLogin()
-                .loginPage("/login")
-                .permitAll()// using the default login page provided by spring security
+                //.loginPage("/login")
+                .permitAll()
+                .loginPage("/login")// using the default login page provided by spring security
+               // .defaultSuccessUrl("/start_Activities")
                 .usernameParameter("email")
-//                .defaultSuccessUrl("/start_Activities")
+//               .defaultSuccessUrl("/start_Activities")// useful when a user logins in fom a page is not secure
 //                .permitAll()
                 //for the logout
                 .and()
