@@ -5,6 +5,7 @@ import com.nicholas.officemanager.entitities.Roles;
 import com.nicholas.officemanager.entitities.Users;
 import com.nicholas.officemanager.repositories.RolesRepository;
 import com.nicholas.officemanager.repositories.UsersRepository;
+import com.nicholas.officemanager.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +28,8 @@ public class UsersController {
         private UsersRepository usersRepository;
         @Autowired
         private RolesRepository rolesRepository;
+        @Autowired
+        private UserService userService;
 
         @GetMapping({"/"})
         public String viewHomePage(){
@@ -58,13 +64,19 @@ public class UsersController {
             return modelAndView;
         }
         @PostMapping("/addEmployee")
-        public String addEmployees(@ModelAttribute Users employees){
-            //encode user password during registration
+        public String addEmployees(Model model, Users users, HttpServletRequest request) throws UnsupportedEncodingException, MessagingException {
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-            String encodedPassword = encoder.encode(employees.getEmpPassword());
-            employees.setEmpPassword(encodedPassword);
-            usersRepository.save(employees);
+            String encodedPassword = encoder.encode(users.getEmpPassword());
+            users.setEmpPassword(encodedPassword);
+            usersRepository.save(users);
+            userService.sendVerificationEmail(users,getSiteURL(request));
+
+            model.addAttribute("pageTitle", "user Registered Successfully");
             return "redirect:/list_employees";
+        }
+        private String getSiteURL(HttpServletRequest request){
+            String siteURL = request.getRequestURI().toString();
+            return  siteURL.replace(request.getServletPath()," ");
         }
         @GetMapping("/showUpdate")
         public ModelAndView showUpdate(@RequestParam Long employeeId){
@@ -79,4 +91,7 @@ public class UsersController {
             return "redirect:/list_employees";
         }
     }
+    //???inside the @postmapping
+//encode user password during registration---- trying to encode the code from the service class
+
 

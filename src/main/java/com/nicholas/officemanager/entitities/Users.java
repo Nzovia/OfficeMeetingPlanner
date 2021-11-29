@@ -22,6 +22,9 @@ public class Users {
     private String employee_email;
     @Column(unique = true, nullable = false,length = 60)
     private String empPassword;
+    private boolean enabled;
+    @Column(unique = true, updatable = false)
+    private String verificationCode;
 
 //    @ManyToOne()
 //    @JoinColumn(name="organization_id")
@@ -95,6 +98,22 @@ public class Users {
         this.empPassword = empPassword;
     }
 
+    public String getVerificationCode() {
+        return verificationCode;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
+    }
+
     public Set<Roles> getRoles() {
         return roles;
     }
@@ -113,6 +132,8 @@ public class Users {
                 ", empphone='" + empphone + '\'' +
                 ", employee_email='" + employee_email + '\'' +
                 ", empPassword='" + empPassword + '\'' +
+                ", enabled=" + enabled +
+                ", verificationCode='" + verificationCode + '\'' +
                 ", roles=" + roles +
                 '}';
     }
