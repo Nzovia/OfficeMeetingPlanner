@@ -1,5 +1,6 @@
 package com.nicholas.officemanager.services;
 
+import com.nicholas.officemanager.CustomFailureHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,8 +45,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     public  void configure(WebSecurity webSecurity){
-        webSecurity.ignoring().antMatchers("/css/**","/js/**");
+        webSecurity.ignoring().antMatchers("/css/**","/js/**","/images/**");
     }
+    @Autowired
+    private CustomFailureHandler customFailureHandler;
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 //        super.configure(http); here we configure the login and the logout for the application
@@ -54,13 +57,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/start_Activities").authenticated()//means you have to be authenticated to view this page
                 .antMatchers("/start_Activities").hasAnyAuthority("User","Co-Admin")
                 .antMatchers("/see_list").hasAuthority("Co-Admin")
+                .antMatchers("/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 //.loginPage("/login")
                 .permitAll()
                 .loginPage("/login")// using the default login page provided by spring security
-               // .defaultSuccessUrl("/start_Activities")
+                //implement a custom failureHandler here
+                .failureHandler(customFailureHandler)
                 .usernameParameter("email")
 //               .defaultSuccessUrl("/start_Activities")// useful when a user logins in fom a page is not secure
 //                .permitAll()
@@ -70,5 +75,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling().accessDeniedPage("/403");
     }
+
 
 }

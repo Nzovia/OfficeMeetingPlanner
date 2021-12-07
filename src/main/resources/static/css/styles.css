@@ -136,6 +136,72 @@ body{
     color: #717171;
     /*line-height: 25px;*/
 }
+
+/*styling the cards*/
+.main_content .content{
+    position: relative;
+    margin-top: 5px;
+    min-height: 90vh;
+    /*background: rgb(233, 226, 226);*/
+}
+.main_content  .content .cards{
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.main_content  .content .cards .card{
+    width: 300px;
+    padding: 10px 15px;
+    height: 150px;
+    background: white;
+    margin: 5px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.18);
+}
+.main_content.content .subContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+}
+/*content two styling*/
+.main_content .content .content-2{
+    min-height: 60vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.main_content .content .content-2 .meeting-queue{
+    min-height: 50vh;
+    flex: 5;
+    background: white;
+    margin: 0 25px 25px 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.18);
+    display: flex;
+    flex-direction: column;
+}
+.main_content .content .content-2 .new-employee{
+    min-height: 50vh;
+    flex: 2;
+    background: white;
+    margin: 0 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.18);
+    display: flex;
+    flex-direction: column;
+}
+.main_content.content .content-2 .new-employee table td:nth-child(1) img{
+    height: 40px;
+    width: 40px;
+
+}
+
+
 /*here you are styling the employee registration form*/
 .center{
     position: absolute;
@@ -249,4 +315,33 @@ input[type="submit"]:hover{
 div.dataTables_wrapper span.select-info,
 div.dataTables_wrapper span.select-item {
     margin-left: 0.25em
+}
+/* making the web app rensponsive */
+
+@media screen and (max-width: 1050px){
+    .side-menu li{
+        font-size: 18px;
+    }
+}
+@media screen and (max-width: 940px){
+    .side-menu li span{
+        display: none;
+    }
+    .side-menu{
+        align-items: center;
+    }
+    .side-menu li img{
+        width: 40px;
+        height: 40px;
+    }
+
+}
+@media screen and (max-width: 540px){
+    .company h1{
+        font-size: 16px;
+    }
+    .container .content .cards{
+        justify-content: center;
+
+    }
 }

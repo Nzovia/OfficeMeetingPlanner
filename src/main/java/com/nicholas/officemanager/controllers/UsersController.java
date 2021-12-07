@@ -3,10 +3,12 @@ package com.nicholas.officemanager.controllers;
 import com.nicholas.officemanager.entitities.BoardRooms;
 import com.nicholas.officemanager.entitities.Roles;
 import com.nicholas.officemanager.entitities.Users;
+import com.nicholas.officemanager.entitities.Utility;
 import com.nicholas.officemanager.repositories.RolesRepository;
 import com.nicholas.officemanager.repositories.UsersRepository;
 import com.nicholas.officemanager.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +32,8 @@ public class UsersController {
         private RolesRepository rolesRepository;
         @Autowired
         private UserService userService;
+       @Autowired
+       private JavaMailSender mailSender;
 
         @GetMapping({"/"})
         public String viewHomePage(){
@@ -68,16 +72,17 @@ public class UsersController {
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             String encodedPassword = encoder.encode(users.getEmpPassword());
             users.setEmpPassword(encodedPassword);
-            usersRepository.save(users);
-            userService.sendVerificationEmail(users,getSiteURL(request));
+
+            userService.register(users);
+
+            String siteURL = Utility.getSiteURL(request);
+            //error
+            userService.sendVerificationEmail(users,siteURL);
 
             model.addAttribute("pageTitle", "user Registered Successfully");
             return "redirect:/list_employees";
         }
-        private String getSiteURL(HttpServletRequest request){
-            String siteURL = request.getRequestURI().toString();
-            return  siteURL.replace(request.getServletPath()," ");
-        }
+
         @GetMapping("/showUpdate")
         public ModelAndView showUpdate(@RequestParam Long employeeId){
             ModelAndView mov = new ModelAndView("add_employee");

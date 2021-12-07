@@ -48,11 +48,114 @@
                 </div>
             </div>
         </div>
+        <div class="content">
+            <div class="cards">
+                <div class="card">
+                    <div class="box">
+                        <h1>110</h1>
+                        <h3>Employees</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img th:src="@{/images/userscard.png}" alt="">
+
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <h1>50</h1>
+                        <h3>Meetings</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img th:src="@{/images/meetingcard.png}" alt="">
+
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <h1>2</h1>
+                        <h3>Rooms</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img th:src="@{/images/boardroom.png}" alt="">
+
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <h1>10</h1>
+                        <h3>Resources</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img th:src="@{/images/resourcescard.png}" alt="">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-2">
+                <div class="meeting-queue">
+                    <div class="title">
+                        <h3 style="padding: 16px;  text-align: center; color:blue">Events in Waiting</h3>
+                        <a href="#" class="btn">View All</a>
+                    </div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Events Id</th>
+                            <th>Meeting Title</th>
+                            <th>StartTime</th>
+                            <th>MeetingDuration</th>
+                            <th>MeetingDescription</th>
+                            <!--                        <th>Action</th>-->
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="meeting_event: ${meeting_events}">
+                            <td th:text="${meeting_event.events_id}"></td>
+                            <td th:text="${meeting_event.meeting_name}"></td>
+                            <td th:text="${meeting_event.start_time}"></td>
+                            <td th:text="${meeting_event.end_time}"></td>
+                            <td th:text="${meeting_event.meeting_date}"></td>
+                            <td th:text="${meeting_event.event_description}"></td>
+
+                            <td>
+                                <a th:href="@{update (eventsId=${meeting_event.events_id})}" class="btn btn-info ">
+                                    Update</a>
+                                <a th:href="@{deleteEmployee (eventsId=${meeting_event.events_id})}" class="btn btn-danger ml-2">
+                                    Delete</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="new-employee">
+                    <div class="title">
+                        <h3 style="padding: 16px; text-align: center;  color:blue">Calender of Events</h3>
+                        <a href="#" class="btn">All</a>
+                    </div>
+<!--                    <table>-->
+<!--                        <tr>-->
+<!--                            <th>profile</th>-->
+<!--                            <th>name</th>-->
+<!--                            <th>Email</th>-->
+<!--                            <th>message</th>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td><img th:src="@{/images/user.png}" alt=""></td>-->
+<!--                            <td>Nicholas Maundu</td>-->
+<!--                            <td>nichonzovia@gmail.com</td>-->
+<!--                            <td><a href="#" class="btn">View</a></td>-->
+<!--                        </tr>-->
+                    </table>
+                </div>
+
+            </div>
+            </div>
+
         <div class="info">
             <a th:href="@{createOrganization}">Add New organization</a>
             <br>   <br>
             <a th:href="@{createRoles}">Create Roles</a>
-
         </div>
     </div>
 </div>

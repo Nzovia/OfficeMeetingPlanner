@@ -1,6 +1,7 @@
 package com.nicholas.officemanager.entitities;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,6 +26,12 @@ public class Users {
     private boolean enabled;
     @Column(unique = true, updatable = false)
     private String verificationCode;
+    @Column(name="account_non_locked", nullable = false)
+    private boolean accountNonLocked;
+    @Column(name="failedAttempts")
+    private  int failedAttempt;
+    @Column(name="locked_duration")
+    private Date lockTime;
 
 //    @ManyToOne()
 //    @JoinColumn(name="organization_id")
@@ -110,6 +117,30 @@ public class Users {
         this.enabled = enabled;
     }
 
+    public boolean isAccountNonLocked() {
+        return accountNonLocked;
+    }
+
+    public void setAccountNonLocked(boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
+    }
+
+    public int getFailedAttempt() {
+        return failedAttempt;
+    }
+
+    public void setFailedAttempt(int failedAttempt) {
+        this.failedAttempt = failedAttempt;
+    }
+
+    public Date getLockTime() {
+        return lockTime;
+    }
+
+    public void setLockTime(Date lockTime) {
+        this.lockTime = lockTime;
+    }
+
     public void setVerificationCode(String verificationCode) {
         this.verificationCode = verificationCode;
     }
@@ -122,19 +153,19 @@ public class Users {
         this.roles = roles;
     }
 
-    @Override
-    public String toString() {
-        return "Users{" +
-                "employeeId=" + employeeId +
-                ", firstName='" + firstName + '\'' +
-                ", secondName='" + secondName + '\'' +
-                ", empgender='" + empgender + '\'' +
-                ", empphone='" + empphone + '\'' +
-                ", employee_email='" + employee_email + '\'' +
-                ", empPassword='" + empPassword + '\'' +
-                ", enabled=" + enabled +
-                ", verificationCode='" + verificationCode + '\'' +
-                ", roles=" + roles +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Users{" +
+//                "employeeId=" + employeeId +
+//                ", firstName='" + firstName + '\'' +
+//                ", secondName='" + secondName + '\'' +
+//                ", empgender='" + empgender + '\'' +
+//                ", empphone='" + empphone + '\'' +
+//                ", employee_email='" + employee_email + '\'' +
+//                ", empPassword='" + empPassword + '\'' +
+//                ", enabled=" + enabled +
+//                ", verificationCode='" + verificationCode + '\'' +
+//                ", roles=" + roles +
+//                '}';
+//    }
 }
