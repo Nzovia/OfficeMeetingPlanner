@@ -53,22 +53,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 //        super.configure(http); here we configure the login and the logout for the application
         http.authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/start_Activities").authenticated()//means you have to be authenticated to view this page
-                .antMatchers("/start_Activities").hasAnyAuthority("User","Co-Admin")
-                .antMatchers("/see_list").hasAuthority("Co-Admin")
+                .antMatchers("/index.html").permitAll()
                 .antMatchers("/login").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/start_Activities").authenticated()//means you have to be authenticated to view this page
+                .antMatchers("/see_list").hasRole("Admin")
+                .antMatchers("/start_Activities/see_events").hasAnyRole("User","Co-Admin", "Admin")
+//                .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                //.loginPage("/login")
+//                        form->form
+//                                .defaultSuccessUrl("/start_Activities")
+//                                .loginPage("/login")
+//                                .failureHandler(customFailureHandler)
+//                                .failureUrl("/login?error=true")
+//                );
                 .permitAll()
                 .loginPage("/login")// using the default login page provided by spring security
                 //implement a custom failureHandler here
                 .failureHandler(customFailureHandler)
                 .usernameParameter("email")
-//               .defaultSuccessUrl("/start_Activities")// useful when a user logins in fom a page is not secure
-//                .permitAll()
                 //for the logout
                 .and()
                 .logout().logoutSuccessUrl("/index").permitAll()
