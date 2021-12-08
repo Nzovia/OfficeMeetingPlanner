@@ -19,12 +19,17 @@
             <li><a th:href="@{eventsOperations}"><i class="fas fa-project-diagram"></i>Meetings</a></li>
             <li><a href="#"><i class="fas fa-blog"></i>Calendar</a></li>
             <li><a href="#"><i class="fas fa-address-book"></i>Logs</a></li>
-            <br>
-            <li><a href="#"><i class="fas fa-sign-out-alt">
-                <form th:action="@{/logout}" method="post"></form>
-            </i>Sign Out</a></li>
+
 <!--            <li><a href="#"><i class="fas fa-map-pin"></i>Map</a></li>-->
         </ul>
+        <br>
+        <!--sign out from the system-->
+        <div class="ui-button" >
+            <form th:action="@{/logout}" method="post" style="color: red">
+                <input type="hidden"/>
+                <input type="submit" value="Sign Out">
+            </form>
+        </div>
 <!--        <div class="social_media">-->
 <!--            <a href="#"><i class="fab fa-facebook-f"></i></a>-->
 <!--            <a href="#"><i class="fab fa-twitter"></i></a>-->

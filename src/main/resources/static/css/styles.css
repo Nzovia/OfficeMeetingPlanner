@@ -57,6 +57,14 @@ body{
 .wrapper .sidebar ul li:hover a{
     color: #fff;
 }
+.wrapper .sidebar .ui-button{
+    padding: 2px; width: 100px;
+    height: 20px;
+    font-size: 1em;
+}
+.ui-button:hover{
+    text-decoration: red;
+}
 
 .wrapper .sidebar .social_media{
     position: absolute;
