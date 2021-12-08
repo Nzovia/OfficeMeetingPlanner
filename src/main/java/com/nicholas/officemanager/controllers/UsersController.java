@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,8 +33,8 @@ public class UsersController {
         private RolesRepository rolesRepository;
         @Autowired
         private UserService userService;
-       @Autowired
-       private JavaMailSender mailSender;
+//       @Autowired
+//       private JavaMailSender mailSender;
 
         @GetMapping({"/"})
         public String viewHomePage(){
@@ -95,6 +96,14 @@ public class UsersController {
             usersRepository.deleteById(employeeId);
             return "redirect:/list_employees";
         }
+
+    @GetMapping({"/myProfile"})
+    public  String showProfile(Model model, Principal principal){
+        String email = principal.getName();
+        Users user=usersRepository.findByEmail(email);
+        model.addAttribute("users", user);
+        return "userProfile";
+    }
     }
     //???inside the @postmapping
 //encode user password during registration---- trying to encode the code from the service class

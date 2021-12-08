@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+
+         thead, tbody{
+            display: inline-block;
+        }
+         table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr >
+        <th>FirstName: </th>
+        <td th:each="employee: ${users}" th:text="${employee.firstName}"></td>
+    </tr>
+    <tr>
+        <th>SecondName: </th>
+            <td th:each="employee: ${users}" th:text="${employee.secondName}"></td>
+    </tr>
+    <tr>
+        <th>Gender:</th>
+        <td th:each="employee: ${users}" th:text="${employee.empgender}"></td></tr>
+    <tr>
+        <th>Phone: </th>
+        <td th:each="employee: ${users}" th:text="${employee.empphone}"></td>
+    </tr>
+    <tr>
+        <th>Email: </th>
+        <td th:each="employee: ${users}" th:text="${employee.employee_email}"></td></tr>
+<!--    <tr>-->
+<!--        <th>Role:</th>-->
+<!--        <td  th:each="role : ${employee.roles}" th:text="${role.roleTitle}"></td>-->
+<!--    </tr>-->
+    </tr>
+
+
+
+<!--        <td>-->
+<!--            <a th:href="@{showUpdate (employeeId=${employee.employeeId})}" class="btn btn-info btn-sm">-->
+<!--                Update</a>-->
+<!--            <a th:href="@{showDeleteEmployee (employeeId=${employee.employeeId})}" class="btn btn-danger ml-2 btn-sm">-->
+<!--                Delete</a>-->
+
+<!--        </td>-->
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

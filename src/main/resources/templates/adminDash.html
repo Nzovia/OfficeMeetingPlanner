@@ -23,12 +23,15 @@
 <!--            <li><a href="#"><i class="fas fa-map-pin"></i>Map</a></li>-->
         </ul>
         <br>
-        <!--sign out from the system-->
-        <div class="ui-button" >
-            <form th:action="@{/logout}" method="post" style="color: red">
-                <input type="hidden"/>
-                <input type="submit" value="Sign Out">
-            </form>
+        <br>
+
+        <div class="logout" >
+                <form th:action="@{/logout}" method="post">
+                    <input type="hidden"
+                     style="color: red"
+                    />
+                    <input type="submit" value="SignOut" colo>
+                </form>
         </div>
 <!--        <div class="social_media">-->
 <!--            <a href="#"><i class="fab fa-facebook-f"></i></a>-->
@@ -52,7 +55,7 @@
                         <img th:src="@{/images/notification-bell.png}" alt="">
                     </div>
                     <div class="img-case">
-                        <img th:src="@{/images/user.png}" alt="">
+                        <a href="/myProfile"><img th:src="@{/images/user.png}" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -119,21 +122,21 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="meeting_event: ${meeting_events}">
-                            <td th:text="${meeting_event.events_id}"></td>
-                            <td th:text="${meeting_event.meeting_name}"></td>
-                            <td th:text="${meeting_event.start_time}"></td>
-                            <td th:text="${meeting_event.end_time}"></td>
-                            <td th:text="${meeting_event.meeting_date}"></td>
-                            <td th:text="${meeting_event.event_description}"></td>
+<!--                        <tr th:each="meeting_event: ${meeting_events}">-->
+<!--                            <td th:text="${meeting_event.events_id}"></td>-->
+<!--                            <td th:text="${meeting_event.meeting_name}"></td>-->
+<!--                            <td th:text="${meeting_event.start_time}"></td>-->
+<!--                            <td th:text="${meeting_event.end_time}"></td>-->
+<!--                            <td th:text="${meeting_event.meeting_date}"></td>-->
+<!--                            <td th:text="${meeting_event.event_description}"></td>-->
 
-                            <td>
-                                <a th:href="@{update (eventsId=${meeting_event.events_id})}" class="btn btn-info ">
-                                    Update</a>
-                                <a th:href="@{deleteEmployee (eventsId=${meeting_event.events_id})}" class="btn btn-danger ml-2">
-                                    Delete</a>
-                            </td>
-                        </tr>
+<!--                            <td>-->
+<!--                                <a th:href="@{update (eventsId=${meeting_event.events_id})}" class="btn btn-info ">-->
+<!--                                    Update</a>-->
+<!--                                <a th:href="@{deleteEmployee (eventsId=${meeting_event.events_id})}" class="btn btn-danger ml-2">-->
+<!--                                    Delete</a>-->
+<!--                            </td>-->
+<!--                        </tr>-->
                         </tbody>
                     </table>
                 </div>
