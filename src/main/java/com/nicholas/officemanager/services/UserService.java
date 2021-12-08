@@ -45,15 +45,15 @@ public class UserService {
     }
     public void sendVerificationEmail(Users users, String siteURL) throws  MessagingException, UnsupportedEncodingException{
         String toAddress = users.getEmployee_email();
-        String fromAddress = "codedspringboot@gmail.com";
+        String fromAddress = "eworkske@gmail.com";
         String subject = "Please Verify your registration";
         String senderName = "Seasoned Developer";
-        String mailContent = "<p> Dear" + users.getFirstName()+ ",</p>";
+        String mailContent = "<p> Dear " + users.getFirstName()+ ",</p>";
         mailContent += "<p> please click the link below to verify your registration: </p>";
 
         String verifyURL = siteURL + "/verify?code=" + users.getVerificationCode();
 
-        mailContent +="<h3><a href=\" "+ verifyURL+ "target=\"_self\"> VERIFY </a></h3>";
+        mailContent +="<h3><a href=\""+ verifyURL + "\"> VERIFY </a></h3>";
         mailContent +="<p>Thank you,<br> Seasoned Developer</p>";
 
             //create a MimeMessage for you to send the spring email in html format

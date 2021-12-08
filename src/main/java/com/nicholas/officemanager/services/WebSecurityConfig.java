@@ -53,6 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 //        super.configure(http); here we configure the login and the logout for the application
         http.authorizeRequests()
+
                 .antMatchers("/index.html").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/start_Activities").authenticated()//means you have to be authenticated to view this page
