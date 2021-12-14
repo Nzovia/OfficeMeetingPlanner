@@ -32,6 +32,8 @@ public class Users {
     private  int failedAttempt;
     @Column(name="locked_duration")
     private Date lockTime;
+    @Column(name = "reset_password_token")
+    private String resetPasswordToken;
 
 //    @ManyToOne()
 //    @JoinColumn(name="organization_id")
@@ -151,6 +153,14 @@ public class Users {
 
     public void setRoles(Set<Roles> roles) {
         this.roles = roles;
+    }
+
+    public String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
+
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
     }
 
 //    @Override

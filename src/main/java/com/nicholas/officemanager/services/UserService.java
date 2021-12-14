@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -71,6 +72,37 @@ public class UserService {
     public  boolean verify(String verificationCode){
 //        Users users = repo.findByVerificationCode(verificationCode);
         return true;
+    }
+
+
+
+    //RESET PASSWORD METHODS IN THE  SERVICE CLASS
+    public void resetUserPassword(String token, String email) throws UsersNotFoundException {
+               Users users = repo.findByEmail(email);
+               //ensure the customer is not null before you reset the password
+        if(users != null){
+            //update the reset password token
+            users.setResetPasswordToken(token);
+            repo.save(users);
+        }else{
+            //throws exception
+            throw  new UsersNotFoundException("user email invalid" + email);
+        }
+
+    }
+    public Users get(String resetPasswordToken){
+        return repo.findByResetPasswordToken(resetPasswordToken);
+    }
+    //updating password for the user
+    public void updatePassword(Users users, String newPassword){
+        //we have to encrypt password
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(newPassword);
+
+        users.setEmpPassword(encodedPassword);
+
+        users.setResetPasswordToken(null);
+        repo.save(users);
     }
 
 

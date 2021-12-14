@@ -15,8 +15,6 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
 
     @Query("SELECT u FROM Users u WHERE u.employee_email = ?1")
     public Users getUsersByEmployee_email(@Param("employee_email")String employee_email);
-//    Users findByEmail(String email);
-     // =?1 means first parameter
      @Query("SELECT u FROM Users u WHERE u.employee_email = ?1")
      Users findByEmail(String email);
 
@@ -28,6 +26,9 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
      @Query("UPDATE Users  u SET u.failedAttempt = ?1 WHERE  u.employee_email = ?2")
      @Modifying
      public void updateFailedAttempt(int failedAttempt, String email);
+
+     public Users findByResetPasswordToken(String token);
 }
+
 
 
