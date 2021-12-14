@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <title>Login</title>
-<!--    <link  th:href = "@{/css/customizedStyle}" rel="stylesheet">-->
     <style>
         @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
         *{
@@ -159,7 +158,7 @@
                 <label for="remember-me">Remember me</label>
             </div>
             <div class="pass-link">
-                <a href="#">Forgot password?</a>
+                <a th:href="@{resetPassword}">Forgot password?</a>
             </div>
         </div>
         <div class="field">
