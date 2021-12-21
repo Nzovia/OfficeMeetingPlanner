@@ -27,7 +27,7 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
      @Modifying
      public void updateFailedAttempt(int failedAttempt, String email);
 
-     public Users findByResetPasswordToken(String token);
+     Users findByResetPasswordToken(String token);
 }
 
 

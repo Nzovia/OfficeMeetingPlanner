@@ -86,14 +86,14 @@ public class UserService {
             repo.save(users);
         }else{
             //throws exception
-            throw  new UsersNotFoundException("user email invalid" + email);
+            throw  new UsersNotFoundException("Email not found " + email);
         }
 
     }
     public Users get(String resetPasswordToken){
         return repo.findByResetPasswordToken(resetPasswordToken);
     }
-    //updating password for the user
+    //updating password for the user to the new one
     public void updatePassword(Users users, String newPassword){
         //we have to encrypt password
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
